@@ -3,11 +3,9 @@ import os
 from re import X
 os.environ["TF_CPP_MIN_LOG_LEVEL"]="3"
 
-import tensorflow as tf
-# Note: tensorflow 2.x is required! Be careful to add the correct package
 from tensorflow import keras
+# Note: tensorflow 2.x is required! Be careful to add the correct package
 
-import numpy as np
 
 """
 KEYWORDS:
@@ -18,7 +16,9 @@ metrics (concept - function argument)
 
 model (object)
 compile (function)
-fit(function)
+fit (function)
+
+"The 1st Method to Create the Model Object: Predefined Model" (local topic)
 """
 
 # **1 - Dataset Preparation**
@@ -38,7 +38,11 @@ X_train = X_train/255.0
 
 # **2 - Model Design**
 
-# This is one of the ways to create the model object:
+# This is "The 1st Method to Create the Model Object: Predefined Model". In this method, just use 
+# the predefined class (from keras.moodels module) for your desired model and give it the layers
+# sequentially, without declaring input and output for each layer (just set input shape for the 1st 
+# layer):
+
 model = keras.models.Sequential([
                                  # This first layer makes a row-vector from the input image:
                                  keras.layers.Flatten(input_shape=(28,28)),

@@ -26,6 +26,8 @@ predict (function)
 
 summary (function)
 keras.utils.plot_model (function)
+
+model visualization (task)
 """
 
 # **1 - Dataset Preparation**
