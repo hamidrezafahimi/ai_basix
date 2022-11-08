@@ -7,14 +7,14 @@ A sample architecture for a *sequential model* is a multi-layer perceptron (MLP)
 
 The following (hand-written notes) is a sample of three fully-connected layers of an MLP. When entering the pixels of a 28*28 image as input and getting the output value as tags for a 10-class classification.
 
-![image info](./figs/seq_model_mlp.png)
+![image info](../figs/seq_model_mlp.png)
 
 
 ## Mathematical concept of an MLP architecture
 
 Look at the following picture:
 
-![image info](./figs/mlp_architecture.png)
+![image info](../figs/mlp_architecture.png)
 
 About what is happening when a network is trained, there can be two expressions:
 
@@ -30,7 +30,7 @@ Another expression is this: A b-node layer, maps the input from its previous a-n
 
 *I other words*, we are to extract features from input data with the same number as next layer nodes. Next layers extract more complicated features of an input compared to prevoius layers. See:
 
-![image info](./figs/complex_features.png)
+![image info](../figs/complex_features.png)
 
 Therefore, the hidden layers are mappings to different multi-dimensional spaces with desired number of dimensions. Thus, about the *strategy of setting number of nodes of hidden layers in an MLP net* it can be stated that:
 
@@ -54,5 +54,5 @@ Wide networks with low number of layers vs. deep networks with thin layers. Whic
 
 #### Final hint,
 
-There are no deterministic way to determine the optimal number of nodes. The best nuumber of nodes must be deermined with trial and error.
+There are no deterministic way to determine the optimal number of nodes. The best nuumber of nodes must be determined with trial and error.
 

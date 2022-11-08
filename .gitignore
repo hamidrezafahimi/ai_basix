@@ -1,0 +1,11 @@
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
+*/*/*/__pycache__/
+*/*/*/*/__pycache__/
+*.jpg
+*.jpeg
+*.pyc
+*.png
+!notes/figs/*.png
+logs/

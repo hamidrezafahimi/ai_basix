@@ -2,7 +2,7 @@
 
 Take a look at this:
 
-![image info](./figs/not_mlp.png)
+![image info](../figs/not_mlp.png)
 
 In th above, each node is a network layer. To implement such directed graph network, one should:
 
@@ -11,6 +11,6 @@ In th above, each node is a network layer. To implement such directed graph netw
 
 ## Ensembled NNs
 
-![image info](./figs/ENN.png)
+![image info](../figs/ENN.png)
 
 The network includes multiple MLPs with small abilities and high sensitivity to input (Each MLP has an error value in voting). The output is voted between networks and error value is reduced without exponensial increase in number of weights.

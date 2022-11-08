@@ -122,12 +122,12 @@ test_loss, test_acc = model.evaluate(X_test, Y_test, verbose=2)
 
 # **6 - Using the Model**
 
-# First, theinput data must be prepared:
+# First, the input data must be prepared:
 
 X = X_test[0]       # The first picture of test dataset
 plt.imshow(X)
 
-Y = Y_test[0]       # The first label of tst dataset
+Y = Y_test[0]       # The first label of test dataset
 print(Y)
 
 # Use the trained network (give input and get output):
