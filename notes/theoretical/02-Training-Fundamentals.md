@@ -10,9 +10,11 @@
 The change in network weights must be reasonable. Unchanges weights or diverged weights both are not desired. Looking at the changes of network weights through sequential layers of a network, to bad things may happen:
 
 #### A Vanishing Gradient:
+
 A vanishing gradient is a case in which the change in network weights decreases while going backward into the input of network. Mathemattically, the reason for this phenomena is an exponential increase in the order of the errors propagated as result of the back propagation formula.
 
 #### An Exploding Gradient:
+
 An exploding gradient is a case in which the change in network weights increases while going backward into the input of network. Such that the weights of the network in the input layers become totally stochastic. A probable reason for that, may be the high number produced by the derivative a the activation function (as it is present in back propagation formula)
 
 
