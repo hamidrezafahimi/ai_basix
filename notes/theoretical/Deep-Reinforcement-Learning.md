@@ -10,28 +10,29 @@
     - [Value_Based_RL](#section-id-112)
     - [Policy_Based_RL](#section-id-121)
     - [Model_Based_RL](#section-id-140)
-- [Traditional RL vs. DRL](#section-id-169)
-  - [Bellman Functions: The Traditional Way to Find the Optimal Policy](#section-id-183)
-    - [Value_Function](#section-id-187)
-    - [Q_Function](#section-id-209)
-  - [Deep Reinforcement Learning](#section-id-225)
-- [Review of Major DRL Methods](#section-id-240)
-  - [Deep Q-Learning (DQN): A Value-Based RL Method](#section-id-242)
-    - [Traditional Q-Learning Algorithm](#section-id-246)
-    - [DQN Algorithm](#section-id-268)
-      - [Loss function](#section-id-282)
-    - [Revised DQN](#section-id-294)
-      - [Issue-1 In Loss Function: Q](#section-id-296)
-      - [Issue-2 In Loss Function: target](#section-id-304)
-      - [$psilongreedy policy for taking actions](#section-id-312)
-      - [Revised (Final) DQN Algorithm](#section-id-324)
-      - [Loss function](#section-id-331)
-    - [DQN Architecture](#section-id-340)
-    - [Limitations of DQN](#section-id-349)
-  - [DDPG: A Policy-Based RL Method](#section-id-356)
-    - [Mathematical Base](#section-id-363)
-    - [Algorithm](#section-id-374)
-  - [Actor-Critic Algorithm](#section-id-381)
+  - [Traditional RL vs. DRL](#section-id-168)
+- [RL Mathematics](#section-id-199)
+  - [Value-Based RL Mathematics: Bellman Functions](#section-id-201)
+    - [Value_Function](#section-id-205)
+    - [Q_Function](#section-id-227)
+  - [Policy-Based RL Mathematics](#section-id-244)
+    - [More Detailed Math](#section-id-272)
+    - [Policy-Based RL: A Model-Free RL](#section-id-281)
+- [Review of Major DRL Methods](#section-id-298)
+  - [Deep Q-Learning (DQN): A Value-Based RL Method](#section-id-300)
+    - [Traditional Q-Learning Algorithm](#section-id-304)
+    - [Raw DQN Algorithm](#section-id-326)
+    - [Revised (Practical) DQN](#section-id-350)
+      - [Issue-1 In Loss Function: Q](#section-id-354)
+      - [Issue-2 In Loss Function: target](#section-id-362)
+      - [$psilongreedy policy for taking actions](#section-id-370)
+      - [Revised (Final) DQN Algorithm](#section-id-382)
+      - [Loss function](#section-id-389)
+    - [DQN Architecture](#section-id-398)
+    - [Limitations of DQN](#section-id-407)
+  - [A Policy-Based RL Method](#section-id-414)
+    - [PG Algorithm](#section-id-421)
+    - [A DDPG Sample](#section-id-429)
   
 
 
@@ -204,9 +205,10 @@ There are to types for this:
 
 Approach:
 
-<p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/model-based-rl.png"/>
-</p>
+- Learn the environment model
+- Plan using the model
+- Update the model often
+- Re-plan often
 
 
 - A **Transition Model** predicts what is going to happen for known state and action.
@@ -221,11 +223,9 @@ $$
 R^a_s = E[R| S=s, A=a]
 $$
 
+<div id='section-id-168'/>
 
-
-<div id='section-id-169'/>
-
-# Traditional RL vs. DRL
+## Traditional RL vs. DRL
 
 The traditional RL has been introduced since 1950s. But it has not been used in real-world problems until 2000s. The major issue was:
 
@@ -238,14 +238,35 @@ Here is the main difference between the traditional RL and DRL:
 - In the traditional RL, an optimal policy is obtained based on *bellman functions*
 - In DRL, the function to find the optimal policy is estimated with a deep neural network
 
+With help of deep neural networks (DNNs), the (numerous-descritized- or) continuous-state/action-space problems can be solved. Two major benefits of deep learning, **Representing** and **Comprehending** data, can be added to the major benefit of reinforcement learning, which is the **Action Ability** on an obtained understanding.
 
-<div id='section-id-183'/>
+<p align="center">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/drl.png"/>
+</p>
 
-## Bellman Functions: The Traditional Way to Find the Optimal Policy
+There are three main paradigms in DRL:
+
+* **Critic-Only:** Estimating a value function using a DNN [just as described](#Value-Based-RL). The output of such networks is as wide as the whole action space (for the input state), claiming a value for each action (for the input state).
+
+* **Actor-Only:** Direct estimation of policy function using a DNN [just as described](#Policy_Based_RL). The output of sunch network is a single action
+
+* **Actor-Critic**
+This method is a compound of value-based approaches (*Q-Learning*) and Policy-Based approaches (*Policy Gradients*):
+
+- The *Actor* is the policy; It determines the action
+- The *Critic* is the Q-function; It evaluates the action
+
+<div id='section-id-199'/>
+
+# RL Mathematics
+
+<div id='section-id-201'/>
+
+## Value-Based RL Mathematics: Bellman Functions
 
 As follows, there are two utilities to get to an optimal policy: *Value-Function* and *Q-Function*. Notice the term $\pi$ in the two following equations. It means the calculation is related to a specific policy.
 
-<div id='section-id-187'/>
+<div id='section-id-205'/>
 
 ### Value_Function
 
@@ -269,7 +290,7 @@ Leading to:
 
 The roll of $\gamma$ is explained [previously](#markovstate)
 
-<div id='section-id-209'/>
+<div id='section-id-227'/>
 
 ### Q_Function
 
@@ -287,34 +308,78 @@ $$
 q_\pi(s, a) = E_\pi[R_{t+1} + \gamma q_\pi(S_{t+1}, A_{t+1}) | S_t = s, A_t = a]
 $$
 
-<div id='section-id-225'/>
 
-## Deep Reinforcement Learning
+<div id='section-id-244'/>
 
-With help of deep neural networks (DNNs), the (numerous-descritized- or) continuous-state/action-space problems can be solved. Two major benefits of deep learning, **Representing** and **Comprehending** data, can be added to the major benefit of reinforcement learning, which is the **Action Ability** on an obtained understanding.
+## Policy-Based RL Mathematics
 
-<p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/drl.png"/>
+In this method, a *Policy Gradient* is defined with a mathematical gradient ascend approach, to maximize a reward based on a policy. 
+
+In other words, for each member policy $\pi_\theta$ of a parameterized policy class:
+
+$$
+\Pi = {\pi_\theta, \theta \in R^m}
+$$
+
+There is a reward function:
+
+$$
+r(\tau)
+$$
+
+The main objective is to maximize the reward (= the expected value of possible rewards - the cost function):
+
+$$
+J(\theta) = E_\pi[r(\tau)]
+$$
+
+So, the parameters must be updated based on a *Gradient Ascend* approach:
+
+$$
+\theta_{t+1} = \theta_t + \alpha \nabla J(\theta_t)
+$$
+
+<div id='section-id-272'/>
+
+### More Detailed Math
+
+<p align="left">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/policy_1.png"/>
+</p>
+<p align="left">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/policy_2.png"/>
 </p>
 
-There are three main paradigms in DRL:
+<div id='section-id-281'/>
 
-* **Critic-Only:** Estimating a value function using a DNN [just as described](#Value-Based-RL). The output of such networks is as wide as the whole action space (for the input state), claiming a value for each action (for the input state).
-* **Actor-Only:** Direct estimation of policy function using a DNN [just as described](#Policy_Based_RL). The output of sunch network is a single action
-* **Actor-Critic**
+### Policy-Based RL: A Model-Free RL
+
+Breaking the above equations, is done in the the followings:
+
+<p align="left">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/j_brake_1.png"/>
+</p>
+<p align="left">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/j_brake_2.png"/>
+</p>
+<p align="left">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/j_brake_3.png"/>
+</p>
+
+The last expression shows no effect of environment in J function. Thus, the optimization based on this method is totally independent of the enviroment.
 
 
-<div id='section-id-240'/>
+<div id='section-id-298'/>
 
 # Review of Major DRL Methods
 
-<div id='section-id-242'/>
+<div id='section-id-300'/>
 
 ## Deep Q-Learning (DQN): A Value-Based RL Method
 
 *Q-Learning* is the most important sample of Value-Based reinforcement learning. First the traditional approach is presented. Then the solution of the same problem in DNN is reviewed.
 
-<div id='section-id-246'/>
+<div id='section-id-304'/>
 
 ### Traditional Q-Learning Algorithm
 
@@ -338,9 +403,9 @@ The pseudo code for the traditional Q-learning algorithm is depicted in the foll
 
 For more details refer [here](https://www.youtube.com/watch?v=D3b50jrKzcc&t=497s)
 
-<div id='section-id-268'/>
+<div id='section-id-326'/>
 
-### DQN Algorithm
+### Raw DQN Algorithm
 
 <p align="center">
   <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/q-learning.png"/>
@@ -352,12 +417,9 @@ As shown in graph, a *Q* function is approximated with a DNN to retuen a value f
   <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/dql.png"/>
 </p>
 
-* Optimization approach is based on Gradient Descent
+The **optimization approach** is based on Gradient Descent
 
-<div id='section-id-282'/>
-
-#### Loss function
-The loss function is based on MSE:
+The **loss function** is based on MSE:
 
 <p align="center">
   <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/q_learning_loss_function.png"/>
@@ -366,13 +428,14 @@ The loss function is based on MSE:
 For more details refer [here](https://www.youtube.com/watch?v=D3b50jrKzcc&t=875s).
 
 
-According to the above algorithm, two major issues exist in the problem. Next section presents solutions to this problem.
 
-<div id='section-id-294'/>
+<div id='section-id-350'/>
 
-### Revised DQN
+### Revised (Practical) DQN
 
-<div id='section-id-296'/>
+According to the the last section, two major issues exist in the problem. Next sections presents solutions and additional refinements to make a DQN converge.
+
+<div id='section-id-354'/>
 
 #### Issue-1 In Loss Function: Q
 
@@ -382,7 +445,7 @@ Calculating the loss function, a feedback is obtained to change the Q function, 
 There are to calls to Q() function (network) in the above algorithm. A copy of the network is saved and its weight are freezed in the beginning of a specific period of iterations (e.g. 100 iterations). The call to $Q_\theta(s,a)$ (2nd call in the algorithm) is made for the network which its weights are being updated online. But the call to $Q_k(s',a')$ is made for the freezed network. After each period, the freezed network is updated with the online network.
 
 
-<div id='section-id-304'/>
+<div id='section-id-362'/>
 
 #### Issue-2 In Loss Function: target
 
@@ -392,7 +455,7 @@ The main assumption in solving the bellman equation, is that the network inputs 
 From an initial state, all the transitions ("action->state"s) for a noon-trained network are generated and buffered in a memory called an *Experience Replay*. A mini-batch of these data is used in training. This waye the inputs are IID because they are generated with a non-trained network. The experience replay is actually as same as the *dataset* which is known in neural network training.
 
 
-<div id='section-id-312'/>
+<div id='section-id-370'/>
 
 #### $\epsilon$-greedy policy for taking actions
 
@@ -406,7 +469,7 @@ From an initial state, all the transitions ("action->state"s) for a noon-trained
 - **The more closed to the end of the training**, *the better actions are chosen* (-> exploitation) 
 
 
-<div id='section-id-324'/>
+<div id='section-id-382'/>
 
 #### Revised (Final) DQN Algorithm
 
@@ -415,7 +478,7 @@ From an initial state, all the transitions ("action->state"s) for a noon-trained
 </p>
 
 
-<div id='section-id-331'/>
+<div id='section-id-389'/>
 
 #### Loss function
 
@@ -426,7 +489,7 @@ The actual loss function considered in a DQN is *Huber Loss*. The green curve in
 </p>
 
 
-<div id='section-id-340'/>
+<div id='section-id-398'/>
 
 ### DQN Architecture
 
@@ -437,7 +500,7 @@ A DQ-Network (DQN) is created of to convolutional and two dense layers, as follo
 </p>
 
 
-<div id='section-id-349'/>
+<div id='section-id-407'/>
 
 ### Limitations of DQN
 
@@ -446,42 +509,32 @@ DQN works in problems with descritized action space. If the actions are to be ta
 DQN doesn't learn stochastic policies, because the outputs are provided deterministically from the Q-function, i.e., the outputs are the value for the actions, not the probability for the optimality of the actions in terms of reward. This is obtained using a *Policy-Based RL*.
 
 
-<div id='section-id-356'/>
+<div id='section-id-414'/>
 
-## DDPG: A Policy-Based RL Method
+## A Policy-Based RL Method
 
 <p align="center">
   <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/policy_based_RL.png"/>
 </p>
 
 
-<div id='section-id-363'/>
+<div id='section-id-421'/>
 
-### Mathematical Base
+### PG Algorithm
 
-In this method, a *Policy Gradient* is defined with a mathematical gradient ascend approach, to maximize a reward based on a policy. The following figures describe how this Policy Gradient is obtained.
-
-<p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/policy_1.png"/>
-</p>
-<p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/policy_2.png"/>
-</p>
-
-<div id='section-id-374'/>
-
-### Algorithm
+A policy gradient (PG) algorithm may be implemented like the follwoing:
 
 <p align="left">
   <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/policy_based_rl_alg.png"/>
 </p>
 
+<div id='section-id-429'/>
 
-<div id='section-id-381'/>
+### A DDPG Sample
 
-## Actor-Critic Algorithm
+A sample of Deep Deterministic Policy Gradient (DDPG) is the follwoing network. This network gets the history of stock and gives descision for investing on 12 different items. The action space is basically continuous and value-based approaches won't work in such a case.
 
-This method is a compound of *Q-Learning* and *Policy Gradients*:
+<p align="left">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/stock.png"/>
+</p>
 
-- The *Actor* is the policy; It determines the action
-- The *Critic* is the Q-function; It evaluates the action
