@@ -11,3 +11,4 @@ __pycache__/
 logs/
 temp/
 !logs/README.md
+!temp/README.md
