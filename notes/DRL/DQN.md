@@ -40,7 +40,7 @@ $$
 The pseudo code for the traditional Q-learning algorithm is depicted in the following. 
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/traditional_Q_learning.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/traditional_Q_learning.png?raw=true", width="600"/>
 </p>
 
 For more details refer [here](https://www.youtube.com/watch?v=D3b50jrKzcc&t=497s)
@@ -50,13 +50,13 @@ For more details refer [here](https://www.youtube.com/watch?v=D3b50jrKzcc&t=497s
 ## Raw DQN Algorithm
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/q-learning.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/q-learning.png?raw=true", width="600"/>
 </p>
 
 As shown in graph, a *Q* function is approximated with a DNN to retuen a value for each possible action *a* taken in an input state *s*. In the following figure, note that the function Q(s,a) is approximated with a neural network. Also, notice the loss function and back propagation step in the last two lines.
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/dql.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/dql.png?raw=true", width="600"/>
 </p>
 
 The **optimization approach** is based on Gradient Descent
@@ -64,7 +64,7 @@ The **optimization approach** is based on Gradient Descent
 The **loss function** is based on MSE:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/q_learning_loss_function.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/q_learning_loss_function.png?raw=true", width="600"/>
 </p>
 
 For more details refer [here](https://www.youtube.com/watch?v=D3b50jrKzcc&t=875s).
@@ -116,7 +116,7 @@ From an initial state, all the transitions ("action->state"s) for a noon-trained
 ### Revised (Final) DQN Algorithm
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/revised_dqn.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/revised_dqn.png?raw=true", width="600"/>
 </p>
 
 
@@ -127,7 +127,7 @@ From an initial state, all the transitions ("action->state"s) for a noon-trained
 The actual loss function considered in a DQN is *Huber Loss*. The green curve in the following figure:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/dqn_loss_func.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/dqn_loss_func.png?raw=true", width="600"/>
 </p>
 
 
@@ -138,7 +138,7 @@ The actual loss function considered in a DQN is *Huber Loss*. The green curve in
 A DQ-Network (DQN) is created of to convolutional and two dense layers, as follows:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/dqn_architecture.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/dqn_architecture.png?raw=true", width="600"/>
 </p>
 
 

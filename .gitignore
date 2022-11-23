@@ -10,5 +10,4 @@ __pycache__/
 !figs/*.png
 logs/
 temp/
-!logs/README.md
-!temp/README.md
+!*/README.md

@@ -28,8 +28,7 @@ X_train = X_train/255.0
 X_test = X_test/255.0
 
 
-# **2 - Model Design**
-
+# TOPIC: (GEN) Ensambeled Network Design in tf2
 
 # How to design a custom model (example: an ensambeled NN model):
 

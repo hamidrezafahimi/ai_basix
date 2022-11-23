@@ -5,8 +5,8 @@
   - [Terminology](#section-id-25)
     - [Variables](#section-id-27)
     - [Parameters](#section-id-38)
-  - [Mathematics](#section-id-46)
-  - [Refinements](#section-id-65)
+  - [Mathematics](#section-id-45)
+  - [Refinements](#section-id-64)
   
 
 
@@ -17,7 +17,7 @@
 ## Policy-Based RL Methods
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/policy_based_RL.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_based_RL.png?raw=true", width="600"/>
 </p>
 
 
@@ -28,13 +28,13 @@
 A policy gradient (PG) algorithm may be implemented like the follwoing:
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/policy_based_rl_alg.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_based_rl_alg.png?raw=true", width="200"/>
 </p>
 
 The algorithm can be stated in other words:
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/policy_based_rl_alg_2.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_based_rl_alg_2.png?raw=true", width="600"/>
 </p>
 
 
@@ -49,44 +49,43 @@ The algorithm can be stated in other words:
 - *A* or *a* - Action
 - *t* - Time step (index)
 - *S* or *s* - State
-- *$\theta$* - A set parameters subjected to a specific policy
-- *$\Pi$* - A set of probable policies
-- *$\pi$* - A single policy
-- *J* - The const function to be maximized during the training
+- $\theta$ - A set parameters subjected to a specific policy
+- $\Pi$ - A set of probable policies
+- $\pi$ - A single policy
+- *J* - The cost function to be maximized during the training
 
 
 <div id='section-id-38'/>
 
 ### Parameters
 
-- ** - Discounted sum of rewards that follow each time-step. It tells the agent how much reward is received after each time-step.
-- *$\alpha$* - Learning rate - The *Gradient Descent (Ascent!)* parameter - Determines how much does the parameters change in each update.
-- *$\gamma$* - Discount factor - Determines how much the agent cares about more future rewards. 
-- ** - 
+- *G* or *R* - Discounted sum of rewards that follow each time-step. It tells the agent how much reward is received after each time-step.
+- $\alpha$ - Learning rate - The *Gradient Descent (Ascent!)* parameter - Determines how much does the parameters change in each update.
+- $\gamma$ - Discount factor - Determines how much the agent cares about more future rewards. 
 
 
-<div id='section-id-46'/>
+<div id='section-id-45'/>
 
 ## Mathematics
 
-Check the basic mathematics of policy-based RL methods [here]().
+Check the basic mathematics of policy-based RL methods [here](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/Fundamentals.md).
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/reinfoece_math_1.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/reinfoece_math_1.png?raw=true", width="400"/>
 </p>
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/reinfoece_math_2.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/reinfoece_math_2.png?raw=true", width="400"/>
 </p>
 
 So here is the gradient ascent parameter-update method:
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/figs/reinfoece_math_3.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/reinfoece_math_3.png?raw=true", width="300"/>
 </p>
 
 
-<div id='section-id-65'/>
+<div id='section-id-64'/>
 
 ## Refinements
 

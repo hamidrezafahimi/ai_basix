@@ -30,7 +30,7 @@ keras.utils.plot_model (function)
 model visualization (task)
 """
 
-# **1 - Dataset Preparation**
+# TOPIC: (GEN) Dataset Preparation - tf
 
 # Prepare the dataset:
 
@@ -54,7 +54,7 @@ plt.show()
 # (TAG-1) Looking to the pictures, the 10 labels are scalar values between 0 to 9. There are no 10-element 
 # vectors and probibility distributions.
 
-# **2 - Model Design**
+# TOPIC: (MLP) Model Design in tf2 - 1
 
 # This is one of the ways to create the model object:
 model = keras.models.Sequential([
@@ -94,7 +94,10 @@ model.summary()
 keras.utils.plot_model(model)
 
 
-# **3 - Model Compile**
+# TOPIC: (GEN) Model Compile in tf2
+# KEYWORD: from_logits
+# KEYWORD: logits
+# KEYWORD: sparse_categorical_crossentropy
 
 # 1st method to compile model object:
 # In this method, all the input objects are defined with their default parameters
@@ -134,7 +137,7 @@ model.compile(optimizer="adam",
               metrics=["accuracy"])
 
 
-# **4 - Model Training**
+# TOPIC: (MLP) Model Training in tf2
 
 # Training with no validation dataset ('fit' does both backward- and forward-pass):
 
@@ -152,13 +155,13 @@ model.fit(X_train, Y_train, epochs=30, validation_split=0.1)
 # of the previous calls
 
 
-# **5 - Model Evaluation**
+# TOPIC: (MLP) Model Evaluation in tf2
 
 # Evaluation of the trined model on 'test dataset'
 test_loss, test_acc = model.evaluate(X_test, Y_test, verbose=2)
 
 
-# **6 - Using the Model**
+# TOPIC: (MLP) Using the Model in tf2
 
 # First, theinput data must be prepared:
 

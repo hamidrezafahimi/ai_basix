@@ -1,33 +1,32 @@
 ### Summary 
 
-- [Basic Concepts](#section-id-3)
-  - [What is Reinforcement Learning](#section-id-5)
-  - [Markov_State](#section-id-17)
-  - [Mathematics of RL: Markov Decision Process (MDP)](#section-id-42)
-  - [What is a Policy?](#section-id-60)
-  - [Main Steps to Solve an RL Problem](#section-id-77)
-  - [RL Taxonomy](#section-id-100)
-    - [Value_Based_RL](#section-id-118)
-    - [Policy_Based_RL](#section-id-127)
-    - [Model_Based_RL](#section-id-146)
-  - [Traditional RL vs. DRL](#section-id-174)
-- [RL Mathematics](#section-id-205)
-  - [Value-Based RL Mathematics: Bellman Functions](#section-id-207)
-    - [Value_Function](#section-id-211)
-    - [Q_Function](#section-id-233)
-  - [Policy-Based RL Mathematics](#section-id-250)
-    - [More Detailed Math](#section-id-278)
-    - [Policy-Based RL: A Model-Free RL](#section-id-287)
+- [Basic Concepts](#section-id-2)
+  - [What is Reinforcement Learning](#section-id-4)
+  - [Markov_State](#section-id-16)
+  - [Mathematics of RL: Markov Decision Process (MDP)](#section-id-45)
+  - [What is a Policy?](#section-id-63)
+  - [Main Steps to Solve an RL Problem](#section-id-80)
+  - [RL Taxonomy](#section-id-103)
+    - [Value_Based_RL](#section-id-121)
+    - [Policy_Based_RL](#section-id-130)
+    - [Model_Based_RL](#section-id-149)
+  - [Traditional RL vs. DRL](#section-id-177)
+- [RL Mathematics](#section-id-208)
+  - [Value-Based RL Mathematics: Bellman Functions](#section-id-210)
+    - [Value_Function](#section-id-214)
+    - [Q_Function](#section-id-236)
+  - [Policy-Based RL Mathematics](#section-id-253)
+    - [More Detailed Math](#section-id-281)
+    - [Policy-Based RL: A Model-Free RL](#section-id-290)
   
 
 
 
-
-<div id='section-id-3'/>
+<div id='section-id-2'/>
 
 # Basic Concepts
 
-<div id='section-id-5'/>
+<div id='section-id-4'/>
 
 ## What is Reinforcement Learning
 
@@ -37,11 +36,11 @@ The structure of reinforcement leaning paradigm is based on *reward* and *punish
 
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/rl_loop.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/rl_loop.png?raw=true", width="600"/>
 </p>
 
 
-<div id='section-id-17'/>
+<div id='section-id-16'/>
 
 ## Markov_State
 
@@ -56,7 +55,7 @@ I.e., future is independent of past, given present.
 The concept of *total reward* in the mentioned structure is shown in the following:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/rl_total_reward.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/rl_total_reward.png?raw=true", width="600"/>
 </p>
 
 To avoid an infinite total reward:
@@ -65,10 +64,14 @@ $$
   R_t = \gamma^0r_t + \gamma^1r_{t+1} + \gamma^2r_{t+2} + ...
 $$
 
+Discounting the future rewards until the end (like above) has two advantages:
+1.
+2.
+
 The objective in a reinforcement learning problem, is to **select actions to maximize the future reward** (above).
 
 
-<div id='section-id-42'/>
+<div id='section-id-45'/>
 
 ## Mathematics of RL: Markov Decision Process (MDP)
 
@@ -83,19 +86,19 @@ An MDP is defined by five properties: (S, A, R, P, $\gamma$)
 The following graph is an example an MDP. For each state, there are allowed actions. For each allowed action, there is resulting states with certain probabilities for each.
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/mdp-graph.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/mdp-graph.png?raw=true", width="600"/>
 </p>
 
 
 
-<div id='section-id-60'/>
+<div id='section-id-63'/>
 
 ## What is a Policy?
 
 A *Policy* is a "state -> action" function, determining what are the choices of action in each state, i.e. A policy is a probability distribution which the agent uses to pick actions. It is actually the solution of s reinforcement learning problem. An example:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_function.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_function.png?raw=true", width="600"/>
 </p>
 
 In the above, the table cells are the states and movement in 4 directions is the action.
@@ -107,7 +110,7 @@ A policy may be deterministic or nondeterministic:
 - A *nondeterministic policy* gives a probability distribution over the possible action, claiming the possibility to be the optimal case, for each action. 
 
 
-<div id='section-id-77'/>
+<div id='section-id-80'/>
 
 ## Main Steps to Solve an RL Problem
 
@@ -119,7 +122,7 @@ These are the major parts of a reinforcement learning problem:
 4- *Training Algorithm* - Is done in the same time as testing is done
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/rl_block_diagram.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/rl_block_diagram.png?raw=true", width="600"/>
 </p>
 
 In an RL problem, one must:
@@ -132,27 +135,27 @@ In an RL problem, one must:
 *The goal in an RL problem, is to get to an optimal policy.*
 
 
-<div id='section-id-100'/>
+<div id='section-id-103'/>
 
 ## RL Taxonomy
 
 This is the main taxonomy of RL methods:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/major_rl_taxonomy.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/major_rl_taxonomy.png?raw=true", width="600"/>
 </p>
 
 In the above, the *model* means a *State Ttansition Function* that predict the next states and rewards during the next transition. Here are some examples of RL methods devided by two major fields, Model-Based or Model-Free:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/rl-taxonomy.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/rl-taxonomy.png?raw=true", width="600"/>
 </p>
 
 The main taxonomy of RLs, is based on *What an RL Agent May Learn*. There are three major fields:
 
 An RL solution can be classified based on its nature:
 
-<div id='section-id-118'/>
+<div id='section-id-121'/>
 
 ### Value_Based_RL
 
@@ -163,7 +166,7 @@ In this methods, an NN is trained as an approximation of a *value function*.
 The question that the agent is to learn its anwer is: How much a state/action is likely to reward me in the future? The function's mathematical expression is declared [here](#Value_Function)
 
 
-<div id='section-id-127'/>
+<div id='section-id-130'/>
 
 ### Policy_Based_RL
 
@@ -184,7 +187,7 @@ $$
 $$
 
 
-<div id='section-id-146'/>
+<div id='section-id-149'/>
 
 ### Model_Based_RL
 
@@ -214,7 +217,7 @@ $$
 R^a_s = E[R| S=s, A=a]
 $$
 
-<div id='section-id-174'/>
+<div id='section-id-177'/>
 
 ## Traditional RL vs. DRL
 
@@ -232,7 +235,7 @@ Here is the main difference between the traditional RL and DRL:
 With help of deep neural networks (DNNs), the (numerous-descritized- or) continuous-state/action-space problems can be solved. Two major benefits of deep learning, **Representing** and **Comprehending** data, can be added to the major benefit of reinforcement learning, which is the **Action Ability** on an obtained understanding.
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/drl.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/drl.png?raw=true", width="600"/>
 </p>
 
 There are three main paradigms in DRL:
@@ -247,24 +250,24 @@ This method is a compound of value-based approaches (*Q-Learning*) and Policy-Ba
 - The *Actor* is the policy; It determines the action
 - The *Critic* is the Q-function; It evaluates the action
 
-<div id='section-id-205'/>
+<div id='section-id-208'/>
 
 # RL Mathematics
 
-<div id='section-id-207'/>
+<div id='section-id-210'/>
 
 ## Value-Based RL Mathematics: Bellman Functions
 
 As follows, there are two utilities to get to an optimal policy: *Value-Function* and *Q-Function*. Notice the term $\pi$ in the two following equations. It means the calculation is related to a specific policy.
 
-<div id='section-id-211'/>
+<div id='section-id-214'/>
 
 ### Value_Function
 
 Starting at each state, there are lots of possible state trajectories (*episodes*) to get to desired target state. The expected value for are possibilities, is th *value* returned by a value function. For a simple 4-state problem, the values returned by a value function may be like the following. Knowing the aforementioned value for each state, helps deciding about the next step at each initial step. For example, in the following, considering the `S2` as a goal, starting at the state `S0`, is more optimal to go to `S1` rather than `S3`.
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/value_func.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/value_func.png?raw=true", width="600"/>
 </p>
 
 Bellman states a mathematical expression for the value function:
@@ -276,19 +279,19 @@ $$
 Leading to:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/val_func.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/val_func.png?raw=true", width="600"/>
 </p>
 
 The roll of $\gamma$ is explained [previously](#markovstate)
 
-<div id='section-id-233'/>
+<div id='section-id-236'/>
 
 ### Q_Function
 
 A Q-function retuens the expected value of possible rewards for all episodes, starting at a *each specific state* and *taking each specific action*.
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/Q_function.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/Q_function.png?raw=true", width="600"/>
 </p>
 
 *NOTE:* A value function can be determined having a Q-function. But the opposite is not true.
@@ -300,7 +303,7 @@ q_\pi(s, a) = E_\pi[R_{t+1} + \gamma q_\pi(S_{t+1}, A_{t+1}) | S_t = s, A_t = a]
 $$
 
 
-<div id='section-id-250'/>
+<div id='section-id-253'/>
 
 ## Policy-Based RL Mathematics
 
@@ -330,31 +333,31 @@ $$
 \theta_{t+1} = \theta_t + \alpha \nabla J(\theta_t)
 $$
 
-<div id='section-id-278'/>
+<div id='section-id-281'/>
 
 ### More Detailed Math
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_1.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_1.png?raw=true", width="600"/>
 </p>
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_2.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_2.png?raw=true", width="600"/>
 </p>
 
-<div id='section-id-287'/>
+<div id='section-id-290'/>
 
 ### Policy-Based RL: A Model-Free RL
 
 Breaking the above equations, is done in the the followings:
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/j_brake_1.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/j_brake_1.png?raw=true", width="600"/>
 </p>
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/j_brake_2.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/j_brake_2.png?raw=true", width="600"/>
 </p>
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/j_brake_3.png"/>
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/j_brake_3.png?raw=true", width="600"/>
 </p>
 
 The last expression shows no effect of environment in J function. Thus, the optimization based on this method is totally independent of the enviroment.
