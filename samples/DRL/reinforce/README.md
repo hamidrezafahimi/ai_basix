@@ -24,3 +24,9 @@ In `tf_policy_gradients.py` - [source code](https://github.com/philtabor/Youtube
 [LINK-10](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/Policy-Gradients.md)
 
 [LINK-11](https://github.com/hamidrezafahimi/ann_basix/blob/master/platforms/tensorflow/keras/custom_model.py)
+
+[LINK-12](https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/G_calc_in_PG.png)
+
+[LINK-13](https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_based_rl_alg_2.png)
+
+[LINK-14](https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/monte_carlo_schematics.png)

@@ -6,7 +6,9 @@
     - [Variables](#section-id-27)
     - [Parameters](#section-id-38)
   - [Mathematics](#section-id-45)
-  - [Refinements](#section-id-64)
+    - [More Detailed Math](#section-id-64)
+    - [Policy-Based RL: A Model-Free RL](#section-id-73)
+  - [Refinements](#section-id-93)
   
 
 
@@ -25,13 +27,13 @@
 
 ## Algorithm
 
-A policy gradient (PG) algorithm may be implemented like the follwoing:
+A conceptual representation of policy gradient (PG) algorithm would be:
 
 <p align="left">
   <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_based_rl_alg.png?raw=true", width="200"/>
 </p>
 
-The algorithm can be stated in other words:
+Practically, the algorithm is implemented like the following:
 
 <p align="left">
   <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_based_rl_alg_2.png?raw=true", width="600"/>
@@ -68,7 +70,7 @@ The algorithm can be stated in other words:
 
 ## Mathematics
 
-Check the basic mathematics of policy-based RL methods [here](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/Fundamentals.md).
+Check the basic mathematics of policy-based RL methods [here](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/DRL-Fundamentals.md).
 
 <p align="left">
   <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/reinfoece_math_1.png?raw=true", width="400"/>
@@ -86,6 +88,39 @@ So here is the gradient ascent parameter-update method:
 
 
 <div id='section-id-64'/>
+
+### More Detailed Math
+
+<p align="left">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_1.png?raw=true", width="600"/>
+</p>
+<p align="left">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_2.png?raw=true", width="600"/>
+</p>
+
+<div id='section-id-73'/>
+
+### Policy-Based RL: A Model-Free RL
+
+Breaking the above equations, is done in the the followings:
+
+<p align="left">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/j_brake_1.png?raw=true", width="600"/>
+</p>
+<p align="left">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/j_brake_2.png?raw=true", width="600"/>
+</p>
+<p align="left">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/j_brake_3.png?raw=true", width="600"/>
+</p>
+
+The last expression shows no effect of environment in J function. Thus, the optimization based on this method is totally independent of the enviroment.
+
+
+
+
+
+<div id='section-id-93'/>
 
 ## Refinements
 

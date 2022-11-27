@@ -83,7 +83,15 @@ class Agent:
         # mirrored network?)
         rewards = np.array(self.reward_memory)
 
-        # ...
+        # TOPIC: (DRL) How to Calculate Discounted Sum of Future Rewards (DSoFR) from Now On (G_t or R_t)
+        # The "discounted rewards from now on" 'R_t' in formulations of LINK-9, and 'G_t' in 
+        # formulations of LINK-10 is calculated for each time-step and saved in an array each element
+        # of which correlated to a time-step
+        # For a better understanding, take a look at the figure demonstrating a schematics of the
+        # following block's algorithm in LINK-12
+        # Notice that, algorithmically, the following block of code is the 'one line to the end' in 
+        # the algorithm demonstrated in LINK-13
+        # 
         G = np.zeros_like(rewards)
         for t in range(len(rewards)):
             G_sum = 0
@@ -92,9 +100,17 @@ class Agent:
                 G_sum += rewards[k] * discount
                 discount *= self.gamma
             G[t] = G_sum
-        
+
+        # The following 4 blocks is the calculation of loss and implementation of the mathematics of 
+        # PG method to train the network, based on the algorithm and mathematical formulas presented 
+        # in LINK-10
+        # 
         with tf.GradientTape() as tape:
             loss = 0
+
+            # The loop iterates over all "DSoFR"s and "state"s to calculate the non-gradiented form of
+            # last term in the last line in the algorithm shown in LINK-13
+            # 
             for idx, (g, state) in enumerate(zip(G, self.state_memory)):
                 state = tf.convert_to_tensor([state], dtype=tf.float32)
                 probs = self.policy(state)
@@ -102,7 +118,14 @@ class Agent:
                 log_prob = action_probs.log_prob(actions[idx])
                 loss += -g * tf.squeeze(log_prob)
 
+        # Calculate the gradient to obtain the final form of last term in the last line of the 
+        # algorithm shown in LINK-13
+        # 
         gradient = tape.gradient(loss, self.policy.trainable_variables)
+
+        # Apply the gradient and update the parameters of the network: Complete form of last line in 
+        # the algorithm shown in LINK-13
+        # 
         self.policy.optimizer.apply_gradients(zip(gradient, self.policy.trainable_variables))
 
         self.state_memory = []

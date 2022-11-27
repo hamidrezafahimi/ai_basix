@@ -3,21 +3,24 @@
 - [Basic Concepts](#section-id-2)
   - [What is Reinforcement Learning](#section-id-4)
   - [Markov_State](#section-id-16)
-  - [Mathematics of RL: Markov Decision Process (MDP)](#section-id-45)
-  - [What is a Policy?](#section-id-63)
-  - [Main Steps to Solve an RL Problem](#section-id-80)
-  - [RL Taxonomy](#section-id-103)
-    - [Value_Based_RL](#section-id-121)
-    - [Policy_Based_RL](#section-id-130)
-    - [Model_Based_RL](#section-id-149)
-  - [Traditional RL vs. DRL](#section-id-177)
-- [RL Mathematics](#section-id-208)
-  - [Value-Based RL Mathematics: Bellman Functions](#section-id-210)
-    - [Value_Function](#section-id-214)
-    - [Q_Function](#section-id-236)
-  - [Policy-Based RL Mathematics](#section-id-253)
-    - [More Detailed Math](#section-id-281)
-    - [Policy-Based RL: A Model-Free RL](#section-id-290)
+  - [Mathematics of RL: Markov Decision Process (MDP)](#section-id-52)
+  - [What is a Policy?](#section-id-70)
+  - [Main Steps to Solve an RL Problem](#section-id-87)
+  - [RL Taxonomy](#section-id-110)
+    - [Value_Based_RL](#section-id-128)
+    - [Policy_Based_RL](#section-id-137)
+    - [Model_Based_RL](#section-id-156)
+  - [Traditional RL vs. DRL](#section-id-184)
+- [RL Mathematics](#section-id-215)
+  - [Value-Based RL Mathematics: Bellman Functions](#section-id-217)
+    - [Value_Function](#section-id-221)
+    - [Q_Function](#section-id-243)
+  - [Policy-Based RL Mathematics](#section-id-260)
+- [DRL Leraning Methods](#section-id-290)
+  - [Monte-Carlo Methods](#section-id-294)
+    - [Training Algorithm](#section-id-299)
+    - [Samples](#section-id-307)
+  - [Temporal Difference](#section-id-315)
   
 
 
@@ -64,14 +67,21 @@ $$
   R_t = \gamma^0r_t + \gamma^1r_{t+1} + \gamma^2r_{t+2} + ...
 $$
 
+The above, is called the *Discounted Sum of Future Rewards* (Sometimes I abbreviate it by *DSoFR*). 
+During training phase a DRL solution, the above statement is calculated for all time-steps of each episode, to be used in the training. A schmatics of this algorithm is depicted in the following:
+
+<p align="center">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/G_calc_in_PG.png?raw=true", width="600"/>
+</p>
+
 Discounting the future rewards until the end (like above) has two advantages:
-1.
-2.
+1. You can control the future rewards so that it doesn't sum up to infinity in future, so that you have limited reward values needed for the optimization of network parameters. (If there is no limitation for rewards, than no maximization of reward is valid)
+2. There are uncertainties aboutreceiving the future rewards, as much as the distance to current instant increases. So the parameter $\gamma$ leads to consideration of this.
 
 The objective in a reinforcement learning problem, is to **select actions to maximize the future reward** (above).
 
 
-<div id='section-id-45'/>
+<div id='section-id-52'/>
 
 ## Mathematics of RL: Markov Decision Process (MDP)
 
@@ -91,7 +101,7 @@ The following graph is an example an MDP. For each state, there are allowed acti
 
 
 
-<div id='section-id-63'/>
+<div id='section-id-70'/>
 
 ## What is a Policy?
 
@@ -110,7 +120,7 @@ A policy may be deterministic or nondeterministic:
 - A *nondeterministic policy* gives a probability distribution over the possible action, claiming the possibility to be the optimal case, for each action. 
 
 
-<div id='section-id-80'/>
+<div id='section-id-87'/>
 
 ## Main Steps to Solve an RL Problem
 
@@ -135,7 +145,7 @@ In an RL problem, one must:
 *The goal in an RL problem, is to get to an optimal policy.*
 
 
-<div id='section-id-103'/>
+<div id='section-id-110'/>
 
 ## RL Taxonomy
 
@@ -155,7 +165,7 @@ The main taxonomy of RLs, is based on *What an RL Agent May Learn*. There are th
 
 An RL solution can be classified based on its nature:
 
-<div id='section-id-121'/>
+<div id='section-id-128'/>
 
 ### Value_Based_RL
 
@@ -166,7 +176,7 @@ In this methods, an NN is trained as an approximation of a *value function*.
 The question that the agent is to learn its anwer is: How much a state/action is likely to reward me in the future? The function's mathematical expression is declared [here](#Value_Function)
 
 
-<div id='section-id-130'/>
+<div id='section-id-137'/>
 
 ### Policy_Based_RL
 
@@ -187,7 +197,7 @@ $$
 $$
 
 
-<div id='section-id-149'/>
+<div id='section-id-156'/>
 
 ### Model_Based_RL
 
@@ -217,7 +227,7 @@ $$
 R^a_s = E[R| S=s, A=a]
 $$
 
-<div id='section-id-177'/>
+<div id='section-id-184'/>
 
 ## Traditional RL vs. DRL
 
@@ -250,17 +260,17 @@ This method is a compound of value-based approaches (*Q-Learning*) and Policy-Ba
 - The *Actor* is the policy; It determines the action
 - The *Critic* is the Q-function; It evaluates the action
 
-<div id='section-id-208'/>
+<div id='section-id-215'/>
 
 # RL Mathematics
 
-<div id='section-id-210'/>
+<div id='section-id-217'/>
 
 ## Value-Based RL Mathematics: Bellman Functions
 
 As follows, there are two utilities to get to an optimal policy: *Value-Function* and *Q-Function*. Notice the term $\pi$ in the two following equations. It means the calculation is related to a specific policy.
 
-<div id='section-id-214'/>
+<div id='section-id-221'/>
 
 ### Value_Function
 
@@ -284,7 +294,7 @@ Leading to:
 
 The roll of $\gamma$ is explained [previously](#markovstate)
 
-<div id='section-id-236'/>
+<div id='section-id-243'/>
 
 ### Q_Function
 
@@ -303,7 +313,7 @@ q_\pi(s, a) = E_\pi[R_{t+1} + \gamma q_\pi(S_{t+1}, A_{t+1}) | S_t = s, A_t = a]
 $$
 
 
-<div id='section-id-253'/>
+<div id='section-id-260'/>
 
 ## Policy-Based RL Mathematics
 
@@ -333,33 +343,43 @@ $$
 \theta_{t+1} = \theta_t + \alpha \nabla J(\theta_t)
 $$
 
-<div id='section-id-281'/>
 
-### More Detailed Math
-
-<p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_1.png?raw=true", width="600"/>
-</p>
-<p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_2.png?raw=true", width="600"/>
-</p>
 
 <div id='section-id-290'/>
 
-### Policy-Based RL: A Model-Free RL
+# DRL Leraning Methods
 
-Breaking the above equations, is done in the the followings:
+There are different learning strategies in DRL, each subjected in one of the following sections.
 
-<p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/j_brake_1.png?raw=true", width="600"/>
+<div id='section-id-294'/>
+
+## Monte-Carlo Methods
+
+In these methods, the training (updating the network parameters) happens after playing a game, i.e., each single episode. A full set of states, actions, and rewards are given to the training-handler function after a full game is been played. These data are iterated and used then, to update the network.
+
+
+<div id='section-id-299'/>
+
+### Training Algorithm 
+
+The following figure demonstrates the algorithm of training the DRL network in monte-carlo methods as a block diagram:
+
+<p align="center">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/monte_carlo_schematics.png?raw=true", width="600"/>
 </p>
-<p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/j_brake_2.png?raw=true", width="600"/>
-</p>
-<p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/j_brake_3.png?raw=true", width="600"/>
-</p>
 
-The last expression shows no effect of environment in J function. Thus, the optimization based on this method is totally independent of the enviroment.
+<div id='section-id-307'/>
+
+### Samples
+
+The followings are some samples of monte-carlo based DRL methods:
+
+- Policy-Gradients (PG)
+- ...
 
 
+<div id='section-id-315'/>
+
+## Temporal Difference
+
+... In these methods, the training procedure is done step-by-step, after each time-step within an episode.

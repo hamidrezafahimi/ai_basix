@@ -64,7 +64,7 @@ class Agent(object):
         # policy function actually returns). Thus, a 'softmax' activation function is required (
         # -> LINK-6).
 
-        # TOPIC: (keras) Custom Loss Functions 
+        # TOPIC: (DRL) A Custom Loss Function in Keras (no tf)
         # The desired loss function for this policy-function-estimator network is not present in 
         # keras. Thus, it is defined here. No other part of the class needs access to this function. 
         # So a nested function is defined.
