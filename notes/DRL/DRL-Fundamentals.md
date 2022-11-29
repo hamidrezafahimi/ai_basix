@@ -7,20 +7,19 @@
   - [What is a Policy?](#section-id-70)
   - [Main Steps to Solve an RL Problem](#section-id-87)
   - [RL Taxonomy](#section-id-110)
-    - [Value_Based_RL](#section-id-128)
-    - [Policy_Based_RL](#section-id-137)
-    - [Model_Based_RL](#section-id-156)
-  - [Traditional RL vs. DRL](#section-id-184)
-- [RL Mathematics](#section-id-215)
-  - [Value-Based RL Mathematics: Bellman Functions](#section-id-217)
-    - [Value_Function](#section-id-221)
-    - [Q_Function](#section-id-243)
-  - [Policy-Based RL Mathematics](#section-id-260)
-- [DRL Leraning Methods](#section-id-290)
-  - [Monte-Carlo Methods](#section-id-294)
-    - [Training Algorithm](#section-id-299)
-    - [Samples](#section-id-307)
-  - [Temporal Difference](#section-id-315)
+  - [Traditional RL vs. DRL](#section-id-131)
+- [RL Mathematics](#section-id-166)
+  - [Value_Based_RL (Bellman Functions)](#section-id-171)
+    - [Value_Function](#section-id-187)
+    - [Q_Function](#section-id-209)
+  - [Policy_Based_RL](#section-id-228)
+  - [Model_Based_RL](#section-id-253)
+- [DRL Leraning Methods](#section-id-283)
+  - [Monte-Carlo Methods](#section-id-287)
+    - [Training Algorithm](#section-id-292)
+    - [Samples](#section-id-300)
+  - [Temporal Difference](#section-id-308)
+    - [Samples](#section-id-312)
   
 
 
@@ -163,71 +162,12 @@ In the above, the *model* means a *State Ttansition Function* that predict the n
 
 The main taxonomy of RLs, is based on *What an RL Agent May Learn*. There are three major fields:
 
-An RL solution can be classified based on its nature:
-
-<div id='section-id-128'/>
-
-### Value_Based_RL
-
-A *Value-Based RL* is to find the rewards: There is a function predicting the reward of quantized states/states-and-actions (-> value-function/Q-function)
-
-In this methods, an NN is trained as an approximation of a *value function*.
-
-The question that the agent is to learn its anwer is: How much a state/action is likely to reward me in the future? The function's mathematical expression is declared [here](#Value_Function)
+1.
+2.
+3.
 
 
-<div id='section-id-137'/>
-
-### Policy_Based_RL
-
-A *Policy-Based RL* is to find the actions: It generates a probability distribution on action space (may be continuous), indicating the best action point. In this methods, a *policy* is to be learned. A network is trained so that it generates probability for more reward for each action. The output of such network, is a probability distribution on the action space which its maxima determines the best choice.
-
-The question that the agent is to learn its anwer is: What decision I have to make in a particular situation?
-
-A policy may be *deterministic*:
-
-$$
-a = \pi(s)
-$$
-
-Or *stochastic*:
-
-$$
-\pi(a|s) = p[A=a|S=s]
-$$
-
-
-<div id='section-id-156'/>
-
-### Model_Based_RL
-
-A *Model-Based RL* approximates a model for the environment and predicts the environment's behavior. In this methods, a *model of the environment* is to be learned.
-
-The question that the agent is to learn its answer is: What will happen to the environment in the next step? (= Environment Model)
-
-There are to types for this:
-
-Approach:
-
-- Learn the environment model
-- Plan using the model
-- Update the model often
-- Re-plan often
-
-
-- A **Transition Model** predicts what is going to happen for known state and action.
-
-$$
-p^a_{ss'} = p[S'=s' | S=s, A=a]
-$$
-
-- A **Rewards Model** predicts what reward is going to be obtained for known state and action.
-
-$$
-R^a_s = E[R| S=s, A=a]
-$$
-
-<div id='section-id-184'/>
+<div id='section-id-131'/>
 
 ## Traditional RL vs. DRL
 
@@ -260,17 +200,36 @@ This method is a compound of value-based approaches (*Q-Learning*) and Policy-Ba
 - The *Actor* is the policy; It determines the action
 - The *Critic* is the Q-function; It evaluates the action
 
-<div id='section-id-215'/>
+
+
+
+
+<div id='section-id-166'/>
 
 # RL Mathematics
 
-<div id='section-id-217'/>
+The mathematics of RL methods is based on the main fact that what an agent is going to learn; A *mapping*, a *policy* or an *environment model*? Based on this, the RL methods are divided into three main categories which where mentioned before. Following is a brief review of each.
 
-## Value-Based RL Mathematics: Bellman Functions
+
+<div id='section-id-171'/>
+
+## Value_Based_RL (Bellman Functions)
+
+A *Value-Based RL* is to find the rewards: There is a function predicting the reward of quantized states/states-and-actions (-> value-function/Q-function)
+
+In these methods, an NN is trained as an approximation of a *State/Action to Reward(Value)* mapping.
+
+The question that the agent is to learn its answer is: How much a state/action is likely to reward me in the future? The function's mathematical expression is declared in the following. 
 
 As follows, there are two utilities to get to an optimal policy: *Value-Function* and *Q-Function*. Notice the term $\pi$ in the two following equations. It means the calculation is related to a specific policy.
 
-<div id='section-id-221'/>
+To master the value-based RL, first, take a look at the following fundamentals to find out what a value0function and Q-function are. Then, here is a table of contexts to be reviewd in the area:
+
+1. [Q-Learning (Fundamentals of Value-Based RL)](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/DQN.md)
+
+2. ...
+
+<div id='section-id-187'/>
 
 ### Value_Function
 
@@ -294,7 +253,7 @@ Leading to:
 
 The roll of $\gamma$ is explained [previously](#markovstate)
 
-<div id='section-id-243'/>
+<div id='section-id-209'/>
 
 ### Q_Function
 
@@ -313,52 +272,81 @@ q_\pi(s, a) = E_\pi[R_{t+1} + \gamma q_\pi(S_{t+1}, A_{t+1}) | S_t = s, A_t = a]
 $$
 
 
-<div id='section-id-260'/>
 
-## Policy-Based RL Mathematics
 
- A *Policy Gradient* is defined with a gradient ascend approach, to maximize a reward based on a policy. 
+<div id='section-id-228'/>
 
-For each policy $\pi$, there are a set of aprameters $\theta_t$ (network weights in DRL) 
+## Policy_Based_RL
 
-$$
-\Pi = {\pi_\theta, \theta \in R^m}
-$$
+A *Policy-Based RL* is to find the actions: It generates a probability distribution on action space (may be continuous), indicating the best action point. In this methods, a *policy* is to be learned. A network is trained so that it generates probability for more reward for each action. The output of such network, is a probability distribution on the action space which its maxima determines the best choice.
 
-For which a reward function is defined:
+The question that the agent is to learn its answer is: What decision I have to make in a particular situation?
+
+A policy may be *deterministic*:
 
 $$
-r(\tau)
+a = \pi(s)
 $$
 
-And so a cost function $J(\theta_t)$: 
+Or *stochastic*:
 
 $$
-J(\theta) = E_\pi[r(\tau)]
+\pi(a|s) = p[A=a|S=s]
 $$
 
-The main objective is to maximize the reward (= the expected value of possible rewards - the cost function). To do so, the parameters must be updated based on a *Gradient Ascend* approach:
+To get more details of these methods, here is a table of context:
+
+1. [PG (Basics of Policy-Based RL)](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/Policy-Gradients.md)
+
+2. [DDPG]() ...
+
+
+<div id='section-id-253'/>
+
+## Model_Based_RL
+
+A *Model-Based RL* approximates a model for the environment and predicts the environment's behavior. In this methods, a *model of the environment* is to be learned.
+
+The question that the agent is to learn its answer is: What will happen to the environment in the next step? (= Environment Model)
+
+There are to types for this:
+
+Approach:
+
+- Learn the environment model
+- Plan using the model
+- Update the model often
+- Re-plan often
+
+
+- A **Transition Model** predicts what is going to happen for known state and action.
 
 $$
-\theta_{t+1} = \theta_t + \alpha \nabla J(\theta_t)
+p^a_{ss'} = p[S'=s' | S=s, A=a]
+$$
+
+- A **Rewards Model** predicts what reward is going to be obtained for known state and action.
+
+$$
+R^a_s = E[R| S=s, A=a]
 $$
 
 
 
-<div id='section-id-290'/>
+<div id='section-id-283'/>
 
 # DRL Leraning Methods
 
 There are different learning strategies in DRL, each subjected in one of the following sections.
 
-<div id='section-id-294'/>
+<div id='section-id-287'/>
 
 ## Monte-Carlo Methods
 
 In these methods, the training (updating the network parameters) happens after playing a game, i.e., each single episode. A full set of states, actions, and rewards are given to the training-handler function after a full game is been played. These data are iterated and used then, to update the network.
 
 
-<div id='section-id-299'/>
+<div id='section-id-292'/>
 
 ### Training Algorithm 
 
@@ -368,7 +356,7 @@ The following figure demonstrates the algorithm of training the DRL network in m
   <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/monte_carlo_schematics.png?raw=true", width="600"/>
 </p>
 
-<div id='section-id-307'/>
+<div id='section-id-300'/>
 
 ### Samples
 
@@ -378,8 +366,17 @@ The followings are some samples of monte-carlo based DRL methods:
 - ...
 
 
-<div id='section-id-315'/>
+<div id='section-id-308'/>
 
 ## Temporal Difference
 
-... In these methods, the training procedure is done step-by-step, after each time-step within an episode.
+In these methods, the training procedure is done step-by-step, after each time-step within an episode.
+
+<div id='section-id-312'/>
+
+### Samples
+
+The followings are some samples of Temporal Difference DRL methods:
+
+- Q-Learning (DQN)
+- ...

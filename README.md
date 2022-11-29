@@ -27,7 +27,7 @@ The following is the best order for one to study the stuff. In cases that there 
 
 For DRL documents, go to directory: `notes/DRL/`. The order of documents (`.md` files) is as follows:
 
-1. [Fundamentals](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/Fundamentals.md)
+1. [Fundamentals](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/DRL-Fundamentals.md)
 2. [DQN](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/DQN.md)
 3. [PG](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/Policy-Gradients.md)
 
@@ -57,7 +57,7 @@ Summary manuscripts (in the `notes` folder) resulted by passing these courses:
 
 A bunch of code samples exist which are my done homeworks during the ANN-Coding courses I have passed:
 
-- Tensorflow-2 - Ahmad Asadi (Teaching Assistant Class for ANN course, safabakhsh, Amirkabir University of Technology) - [This Link]()
+- Tensorflow-2 - Ahmad Asadi (Teaching Assistant Class for ANN course, safabakhsh, Amirkabir University of Technology) - [This Link](https://www.youtube.com/watch?v=1e6rEiTqPsk&list=PLQYKiL8d05Znurc2AwuXQC8mmD5-WeSPm)
 
 ### OpenAI gym
 

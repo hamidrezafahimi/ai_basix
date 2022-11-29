@@ -6,9 +6,9 @@
     - [Variables](#section-id-27)
     - [Parameters](#section-id-38)
   - [Mathematics](#section-id-45)
-    - [More Detailed Math](#section-id-64)
-    - [Policy-Based RL: A Model-Free RL](#section-id-73)
-  - [Refinements](#section-id-93)
+    - [More Detailed Math](#section-id-74)
+    - [Policy-Based RL: A Model-Free RL](#section-id-98)
+  - [Refinements](#section-id-118)
   
 
 
@@ -70,7 +70,43 @@ Practically, the algorithm is implemented like the following:
 
 ## Mathematics
 
-Check the basic mathematics of policy-based RL methods [here](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/DRL-Fundamentals.md).
+A *Policy Gradient* is defined with a gradient ascend approach, to maximize a reward based on a policy. 
+
+For each policy $\pi$, there are a set of aprameters $\theta_t$ (network weights in DRL) 
+
+$$
+\Pi = {\pi_\theta, \theta \in R^m}
+$$
+
+For which a reward function is defined:
+
+$$
+r(\tau)
+$$
+
+And so a cost function $J(\theta_t)$: 
+
+$$
+J(\theta) = E_\pi[r(\tau)]
+$$
+
+The main objective is to maximize the reward (= the expected value of possible rewards - the cost function). To do so, the parameters must be updated based on a *Gradient Ascend* approach:
+
+$$
+\theta_{t+1} = \theta_t + \alpha \nabla J(\theta_t)
+$$
+
+
+<div id='section-id-74'/>
+
+### More Detailed Math
+
+<p align="left">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_1.png?raw=true", width="600"/>
+</p>
+<p align="left">
+  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_2.png?raw=true", width="600"/>
+</p>
 
 <p align="left">
   <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/reinfoece_math_1.png?raw=true", width="400"/>
@@ -87,18 +123,7 @@ So here is the gradient ascent parameter-update method:
 </p>
 
 
-<div id='section-id-64'/>
-
-### More Detailed Math
-
-<p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_1.png?raw=true", width="600"/>
-</p>
-<p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_2.png?raw=true", width="600"/>
-</p>
-
-<div id='section-id-73'/>
+<div id='section-id-98'/>
 
 ### Policy-Based RL: A Model-Free RL
 
@@ -120,7 +145,7 @@ The last expression shows no effect of environment in J function. Thus, the opti
 
 
 
-<div id='section-id-93'/>
+<div id='section-id-118'/>
 
 ## Refinements
 
