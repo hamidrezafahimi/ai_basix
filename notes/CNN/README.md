@@ -1,0 +1,1 @@
+This directory will contain the full theoretical backgrounds for Convolutional Neural Networks (CNNs).
