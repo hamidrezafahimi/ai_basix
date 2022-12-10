@@ -31,14 +31,17 @@ For DRL documents, go to directory: `notes/DRL/`. The order of documents (`.md` 
 2. [DQN](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/DQN.md)
 3. [PG](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/Policy-Gradients.md)
 
-For DRL scripts, go to directory: `samples/DRL/`.The order of codes (`.py` files) is as follows:
+After reviewing the notes, for DRL scripts, go to directory: `samples/DRL/`.The order of codes (`.py` files) is as follows:
 
-1. [tf2 PG agent](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/reinforce/tf2_policy_gradient_agent.py) (You can also take a look at [the same sample for keras](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/reinforce/keras_policy_gradient_agent.py))
-2. [tf2 PG network](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/reinforce/tf2_policy_gradient_network.py)
-3. [tf2 PG training](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/reinforce/tf2_policy_gradient_training.py)
-4. [tf2 Simple DQN Agent](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/DQN/tf2_dqn_agent.py)
-5. [tf2 Simple DQN Training](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/DQN/tf2_dqn_training.py)
-6. [keras Simple DQN Agent (with CNN)](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/DQN/CNN/keras_dqn_agent.py)
+1. [PG Agent (tf2)](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/reinforce/tf2_policy_gradient_agent.py) (---> 
+[network](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/reinforce/tf2_policy_gradient_network.py) -
+[training](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/reinforce/tf2_policy_gradient_training.py)) 
+(You can also take a look at 
+[the same sample for keras](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/reinforce/keras_policy_gradient_agent.py))
+
+2. [Simple DQN Agent (tf2)](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/DQN/tf2_dqn_agent.py) (---> [trainging](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/DQN/tf2_dqn_training.py))
+
+3. [Simple DDQN Agent with CNN (keras)](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/DQN/keras_ddqn_cnn_agent.py)  (Make sure to see the [trainging](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/DQN/keras_ddqn_cnn_training.py) code)
 
 
 

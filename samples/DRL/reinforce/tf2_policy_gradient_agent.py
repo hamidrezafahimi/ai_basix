@@ -4,6 +4,8 @@ from tensorflow.keras.optimizers import Adam
 import numpy as np
 from tf2_policy_gradient_network import PolicyGradientNetwork
 
+# To access each "LINK", read the "README.md" in the current folder.
+
 class Agent:
     def __init__(self, alpha=0.003, gamma=0.99, n_actions=4,
                  layer1_size=256, layer2_size=256):
@@ -30,6 +32,7 @@ class Agent:
         self.policy = PolicyGradientNetwork(n_actions=n_actions)
         self.policy.compile(optimizer=Adam(learning_rate=self.lr))
 
+    # TAG-2
     # This function handles the feedforward pass in the 'predict' model (the mirrored model). It 
     # receives a set of states (observations) and outputs an action:
     # 
@@ -42,20 +45,20 @@ class Agent:
         # 
         state = tf.convert_to_tensor([observation], dtype=tf.float32)
 
-        # TOPIC: (DRL) Using a Network in a Single Time-Step (forward pass):
-        # Get the predicted action-space probability distribution (output of last layer: softmax),
-        # giving a set of states:
+        # TOPIC: (DRL/PG) Using a Network in a Single Time-Step (forward pass):
+        # Giving a set of states, get the predicted action-space probability distribution (output 
+        # of last layer: softmax):
         # 
         probs = self.policy(state)
 
-        # TOPIC: (DRL) Probabilistic Action Selection 
+        # TOPIC: (DRL/PG) Probabilistic Action Selection 
         # Selecting the action given the output probability distribution:
         # Select an action among the probable actions (action space) with a given probability
         # 
         action_probs = tfp.distributions.Categorical(probs=probs)
         action = action_probs.sample()
 
-        # TOPIC: (DRL) Passing Network Output (action) to OpenAI Gym
+        # TOPIC: (DRL/PG) Passing Network Output (action) to OpenAI Gym
         # Notice that the final resulting action (the agent's output) must be a 1D numpy array. 
         # Despite the input to the network's Dense layers which was tf2's 2D tensor. Thus, a 
         # conversion like below is needed.
@@ -83,7 +86,7 @@ class Agent:
         # mirrored network?)
         rewards = np.array(self.reward_memory)
 
-        # TOPIC: (DRL) How to Calculate Discounted Sum of Future Rewards (DSoFR) from Now On (G_t or R_t)
+        # TOPIC: (DRL/PG) How to Calculate Discounted Sum of Future Rewards (DSoFR) from Now On (G_t or R_t)
         # The "discounted rewards from now on" 'R_t' in formulations of LINK-9, and 'G_t' in 
         # formulations of LINK-10 is calculated for each time-step and saved in an array each element
         # of which correlated to a time-step

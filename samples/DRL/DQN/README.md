@@ -20,3 +20,10 @@ Rferenced links;
 
 [LINK-9](https://www.youtube.com/watch?v=a5XbO5Qgy5w&t=460s)
 
+[LINK-10](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/DQN/keras_ddqn_cnn_training.py)
+
+[LINK-11](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/DQN/keras_ddqn_cnn_agent.py)
+
+[LINK-12](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/reinforce/tf2_policy_gradient_agent.py)
+
+[LINK-13](https://github.com/hamidrezafahimi/ann_basix/blob/master/platforms/gym/modification_on_2d_env.py)

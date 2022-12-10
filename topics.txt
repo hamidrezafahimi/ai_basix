@@ -1,0 +1,44 @@
+platforms/gym/modification_on_2d_env.py
+63:# TOPIC: (DRL) Modification on a "gym 2d env" For DRL Training
+110:# TOPIC: (GYM) How to Convert an Ordinary Environment's States to State-Buffers for Motion Sensing
+platforms/tensorflow/keras/01_custom_network_implementation.py
+31:# TOPIC: (GEN) Ensambeled Network Design in tf2
+samples/DRL/DQN/keras_ddqn_cnn_agent.py
+19:        # TOPIC: (DRL/GEN) State-Memory for Environment with Motion
+70:# TOPIC: (DRL/DQN) CNN Network for agent with input states as images
+76:    # TOPIC: (DRL/DQN) The Structure of a Convolutional Layer in DQN
+79:    # TOPIC: (DRL/DQN) Training Agent with Time-Varying Environment and CNN Brain
+104:# TOPIC: (DRL/DQN) A Simple DDQN Agent - keras
+126:        # TOPIC: Input 2D (Image) Observarion to a DRL Agent in Environment with Motion
+179:    # TOPIC: (DRL/DQN) DDQN Learning Algorithm - keras
+samples/DRL/DQN/keras_ddqn_cnn_training.py
+45:    # TOPIC: (DRL/DQN) DQN Training Algorithm
+samples/DRL/DQN/keras_dqn_agent.py
+29:        # TOPIC: (DRL/GEN) When is One-Hot Encoding Necessary
+samples/DRL/DQN/tf2_dqn_agent.py
+90:# TOPIC: (DRL/DQN) Build the Deep Q-Network in tf2
+101:# TOPIC: (DRL/DQN) A Simple DQN Agent - tf2
+139:    # TOPIC: (DRL) Epsilon-Greedy Action Selection
+150:    # TOPIC: (DRL) Practical Difference Between Value-Based and Policy-Based DRL
+165:        # TOPIC: (DRL/DQN) Simple DQN Learning Algorithm
+samples/DRL/reinforce/keras_policy_gradient_agent.py
+67:        # TOPIC: (DRL) A Custom Loss Function in Keras (no tf)
+93:        # TOPIC: Defining the mirror network in DRL
+145:        # TOPIC: Performing One-Hot Encoding on the Network Outputs
+165:        # TOPIC: Zero-Based Normalization on Network Inputs
+175:        # TOPIC: Network Inputs in DRL
+samples/DRL/reinforce/tf2_policy_gradient_agent.py
+42:        # TOPIC: (GEN) The Input to tf2's Dense Layers
+48:        # TOPIC: (DRL/PG) Using a Network in a Single Time-Step (forward pass):
+54:        # TOPIC: (DRL/PG) Probabilistic Action Selection 
+61:        # TOPIC: (DRL/PG) Passing Network Output (action) to OpenAI Gym
+89:        # TOPIC: (DRL/PG) How to Calculate Discounted Sum of Future Rewards (DSoFR) from Now On (G_t or R_t)
+samples/DRL/reinforce/tf2_policy_gradient_training.py
+19:    # TOPIC: (DRL) Training a DRL Network Based on the Monte-Carlo Method
+samples/MLP/tf_02_first_nn_implementation.py
+33:# TOPIC: (GEN) Dataset Preparation - tf
+57:# TOPIC: (MLP) Model Design in tf2 - 1
+97:# TOPIC: (GEN) Model Compile in tf2
+140:# TOPIC: (MLP) Model Training in tf2
+158:# TOPIC: (MLP) Model Evaluation in tf2
+164:# TOPIC: (MLP) Using the Model in tf2

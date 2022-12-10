@@ -1,0 +1,2 @@
+
+Within this folder, lies my separated ANN projects which are not contained by my other repos. also the stand-alone code samples that I have gathered and ran from the internet are here. There are also some sobmodules as references to others open-source ANN projects that I have deployed.

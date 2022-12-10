@@ -8,6 +8,8 @@ from tensorflow.keras.models import load_model
 Implementation of Simple DQN Network
 """
 
+# To access each "LINK", read the "README.md" in the current folder.
+
 class ReplayBuffer():
     def __init__(self, max_size, input_dims):
 
@@ -41,7 +43,8 @@ class ReplayBuffer():
 
     def store_transition(self, state, action, reward, state_, done):
 
-        # What is the index for our first unoccupied memory? - It tells you were you are in the array
+        # What is the index for our first unoccupied memory? If the predefined maximum size for 
+        # the agents memory is full, then get your ass to the beginning indices.
         # 
         index = self.mem_cntr % self.mem_size
 
@@ -84,7 +87,7 @@ class ReplayBuffer():
         return states, actions, rewards, states_, terminal
 
 
-# TOPIC: (DRL) Build the Deep Q-Network in tf2
+# TOPIC: (DRL/DQN) Build the Deep Q-Network in tf2
 # 
 def build_dqn(lr, n_actions, input_dims, fc1_dims, fc2_dims):
     model = keras.Sequential([
@@ -95,7 +98,7 @@ def build_dqn(lr, n_actions, input_dims, fc1_dims, fc2_dims):
     return model
 
 
-# TOPIC: (DRL) A Simple DQN Agent - tf2
+# TOPIC: (DRL/DQN) A Simple DQN Agent - tf2
 # 
 class Agent():
     def __init__(self, lr, gamma, n_actions, epsilon, batch_size,
@@ -132,7 +135,8 @@ class Agent():
         self.memory.store_transition(state, action, reward, new_state, done)
 
 
-    # TOPIC: Epsilon-Greedy Action-Selection
+    # TAG-4
+    # TOPIC: (DRL) Epsilon-Greedy Action Selection
     # 
     def choose_action(self, observation):
         if np.random.random() < self.epsilon:
@@ -142,6 +146,10 @@ class Agent():
             actions = self.q_eval.predict(state)
             action = np.argmax(actions)
         return action
+    # 
+    # TOPIC: (DRL) Practical Difference Between Value-Based and Policy-Based DRL
+    # Compare the above with the LINK-12/TAG-2 to find out what is the practical difference 
+    # between a value-based DRL method (like DQN) and a policy-based DRL method (like PG)
 
 
     def learn(self):
@@ -154,7 +162,7 @@ class Agent():
         # 
         # Otherwise:
 
-        # TOPIC: (DRL) Simple DQN Learning Algorithm
+        # TOPIC: (DRL/DQN) Simple DQN Learning Algorithm
         # To get a better understanding of how the agent is trained in the following, look at the
         # flowchart demonstrated in LINK-3. 
         
@@ -165,19 +173,19 @@ class Agent():
                 self.memory.sample_buffer(self.batch_size)
         batch_index = np.arange(self.batch_size, dtype=np.int32)
         # 
-        # Gather all possible indexes in range of the selected random replay buffer
+        # Provide all possible indexes in range of the selected random replay buffer
 
         # Call the network to get the outputs (Q-values) to be used in next formulations
         # 
         q_eval = self.q_eval.predict(states)
         q_next = self.q_eval.predict(states_)
         # 
-        # If it was DDQN, the 'q_next' (which is used in calculation of target T in LINK-3) would be
-        # obtained from the target network (called Q_next in LINK-4). Take a look at LINK-5 for a 
-        # better understanding.
+        # If it was DDQN, the 'q_next' (which is used in calculation of target T in LINK-3) would 
+        # be obtained from the target network (called Q_next in LINK-4). Take a look at LINK-5 
+        # for a better understanding.
 
-        # (TAG-2) This is the implementation of the if-else structure seen in the basical algorithm of
-        # DQN (demonstrated in LINK-2)
+        # (TAG-2) This is the implementation of the if-else structure seen in the basic algorithm
+        # of DQN (demonstrated in LINK-2)
         # 
         q_target = np.copy(q_eval)
         q_target[batch_index, actions] = rewards + \
@@ -189,8 +197,8 @@ class Agent():
         # For each data (state, ...) in our batch, update the action the agent actually took based on
         # The target formula
 
-        # Updating the network's parameters based on the gradient ascent approach - One to last line 
-        # the algorithm demonstrated in LINK-2
+        # Updating the network's parameters based on the gradient ascent approach - One to last 
+        # line the algorithm demonstrated in LINK-2
         # 
         self.q_eval.train_on_batch(states, q_target)
 

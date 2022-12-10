@@ -5,9 +5,10 @@ from utils import plotLearning
 import tensorflow as tf
 
 """
-Training a DQN agent
+Training a DQN agent - tf2
 """
 
+# To access each "LINK", read the "README.md" in the current folder.
 # To understand how this algorithm works, check the figure shown in LINK-3
 
 if __name__ == '__main__':
