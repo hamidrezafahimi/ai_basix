@@ -65,11 +65,18 @@ class ReplayBuffer():
         self.mem_cntr += 1
 
 
-    # Have you filled the agent's memory enough? If yes, sample a buffer with the predefined 
-    # batch_size, among all the memory cells you've filled so far. If no (happens in the initial 
-    # steps), just sample from the currently filled memory cells. Not initial zero values!
+    # TAG-5
+    # TOPIC: (DRL/GEN) The Experience Replay
+    # This is sampling a buffer from the agent's memory to train it on that (not on a single-step)
+    # in every step of training
+    # Refer to 'LINK-1/Modification2:Replay_Buffer' for theoretical backgrounds
     # 
     def sample_buffer(self, batch_size):
+
+        # Have you filled the agent's memory enough? If yes, sample a buffer with the predefined 
+        # batch_size, among all the memory cells you've filled so far. If no (happens in the initial 
+        # steps), just sample from the currently filled memory cells. Not initial zero values!
+        # 
         max_mem = min(self.mem_cntr, self.mem_size)
 
         # Generate an array with size: 'batch_size' while its elements are numbers in range(max_mem). 
@@ -120,13 +127,17 @@ class Agent():
         # 
         self.eps_dec = epsilon_dec
 
-        # The limit for the epsilon so that it doesn't become zero (Refer to LINK-1 to understand why)
+        # The limit for the epsilon so that it doesn't become zero (Refer to LINK-1 to understand 
+        # why)
         # 
         self.eps_min = epsilon_end
 
+        self.q_eval = build_dqn(lr, n_actions, input_dims, 256, 256)
+        # 
+        # The number of nodes for each fully-connected layer (256) is obtained intuitively
+
         self.batch_size = batch_size
         self.memory = ReplayBuffer(mem_size, input_dims)
-        self.q_eval = build_dqn(lr, n_actions, input_dims, 256, 256)
 
 
     # An interface between the agent and its memory
@@ -184,7 +195,8 @@ class Agent():
         # be obtained from the target network (called Q_next in LINK-4). Take a look at LINK-5 
         # for a better understanding.
 
-        # (TAG-2) This is the implementation of the if-else structure seen in the basic algorithm
+        # TAG-2
+        # This is the implementation of the if-else structure seen in the basic algorithm
         # of DQN (demonstrated in LINK-2)
         # 
         q_target = np.copy(q_eval)
@@ -198,7 +210,7 @@ class Agent():
         # The target formula
 
         # Updating the network's parameters based on the gradient ascent approach - One to last 
-        # line the algorithm demonstrated in LINK-2
+        # line in the algorithm demonstrated in LINK-2
         # 
         self.q_eval.train_on_batch(states, q_target)
 

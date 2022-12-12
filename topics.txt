@@ -14,19 +14,22 @@ samples/DRL/DQN/keras_ddqn_cnn_agent.py
 samples/DRL/DQN/keras_ddqn_cnn_training.py
 45:    # TOPIC: (DRL/DQN) DQN Training Algorithm
 samples/DRL/DQN/keras_dqn_agent.py
-29:        # TOPIC: (DRL/GEN) When is One-Hot Encoding Necessary
+30:        # TOPIC: (DRL/GEN) When is One-Hot Encoding Necessary?
+42:            # TOPIC: (DRL/GEN) Performing One-Hot Encoding on the Network Outputs
+132:            # TOPIC: Reverse of One-Hot Encoding
 samples/DRL/DQN/tf2_dqn_agent.py
-90:# TOPIC: (DRL/DQN) Build the Deep Q-Network in tf2
-101:# TOPIC: (DRL/DQN) A Simple DQN Agent - tf2
-139:    # TOPIC: (DRL) Epsilon-Greedy Action Selection
-150:    # TOPIC: (DRL) Practical Difference Between Value-Based and Policy-Based DRL
-165:        # TOPIC: (DRL/DQN) Simple DQN Learning Algorithm
+69:    # TOPIC: (DRL/GEN) The Experience Replay
+97:# TOPIC: (DRL/DQN) Build the Deep Q-Network in tf2
+108:# TOPIC: (DRL/DQN) A Simple DQN Agent - tf2
+150:    # TOPIC: (DRL) Epsilon-Greedy Action Selection
+161:    # TOPIC: (DRL) Practical Difference Between Value-Based and Policy-Based DRL
+176:        # TOPIC: (DRL/DQN) Simple DQN Learning Algorithm
 samples/DRL/reinforce/keras_policy_gradient_agent.py
-67:        # TOPIC: (DRL) A Custom Loss Function in Keras (no tf)
-93:        # TOPIC: Defining the mirror network in DRL
-145:        # TOPIC: Performing One-Hot Encoding on the Network Outputs
-165:        # TOPIC: Zero-Based Normalization on Network Inputs
-175:        # TOPIC: Network Inputs in DRL
+67:        # TOPIC: (DRL/GEN) A Custom Loss Function in Keras (no tf)
+93:        # TOPIC: (DRL/PG) Defining a mirror network
+146:        # TOPIC: (DRL/GEN) Performing One-Hot Encoding on the Network Outputs
+166:        # TOPIC: (DRL/GEN) Zero-Based Normalization on Network Inputs
+176:        # TOPIC: (DRL/PG) Network Inputs in DRL
 samples/DRL/reinforce/tf2_policy_gradient_agent.py
 42:        # TOPIC: (GEN) The Input to tf2's Dense Layers
 48:        # TOPIC: (DRL/PG) Using a Network in a Single Time-Step (forward pass):
@@ -42,3 +45,29 @@ samples/MLP/tf_02_first_nn_implementation.py
 140:# TOPIC: (MLP) Model Training in tf2
 158:# TOPIC: (MLP) Model Evaluation in tf2
 164:# TOPIC: (MLP) Using the Model in tf2
+topics.txt
+2:63:# TOPIC: (DRL) Modification on a "gym 2d env" For DRL Training
+3:110:# TOPIC: (GYM) How to Convert an Ordinary Environment's States to State-Buffers for Motion Sensing
+5:31:# TOPIC: (GEN) Ensambeled Network Design in tf2
+7:19:        # TOPIC: (DRL/GEN) State-Memory for Environment with Motion
+8:70:# TOPIC: (DRL/DQN) CNN Network for agent with input states as images
+9:76:    # TOPIC: (DRL/DQN) The Structure of a Convolutional Layer in DQN
+10:79:    # TOPIC: (DRL/DQN) Training Agent with Time-Varying Environment and CNN Brain
+11:104:# TOPIC: (DRL/DQN) A Simple DDQN Agent - keras
+12:126:        # TOPIC: Input 2D (Image) Observarion to a DRL Agent in Environment with Motion
+13:179:    # TOPIC: (DRL/DQN) DDQN Learning Algorithm - keras
+15:45:    # TOPIC: (DRL/DQN) DQN Training Algorithm
+17:30:        # TOPIC: (DRL/GEN) When is One-Hot Encoding Necessary?
+18:42:            # TOPIC: (DRL/GEN) Performing One-Hot Encoding on the Network Outputs
+19:132:            # TOPIC: Reverse of One-Hot Encoding
+21:69:    # TOPIC: (DRL/GEN) The Experience Replay
+22:97:# TOPIC: (DRL/DQN) Build the Deep Q-Network in tf2
+23:108:# TOPIC: (DRL/DQN) A Simple DQN Agent - tf2
+24:150:    # TOPIC: (DRL) Epsilon-Greedy Action Selection
+25:161:    # TOPIC: (DRL) Practical Difference Between Value-Based and Policy-Based DRL
+26:176:        # TOPIC: (DRL/DQN) Simple DQN Learning Algorithm
+28:67:        # TOPIC: (DRL/GEN) A Custom Loss Function in Keras (no tf)
+29:93:        # TOPIC: (DRL/PG) Defining a mirror network
+30:146:        # TOPIC: (DRL/GEN) Performing One-Hot Encoding on the Network Outputs
+31:166:        # TOPIC: (DRL/GEN) Zero-Based Normalization on Network Inputs
+32:176:        # TOPIC: (DRL/PG) Network Inputs in DRL

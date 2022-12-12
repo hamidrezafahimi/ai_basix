@@ -147,7 +147,7 @@ There is a good explanation of this algorithm [here](https://www.youtube.com/wat
   <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/revised_dqn.png?raw=true", width="600"/>
 </p>
 
-The following flowchart shows a brief review of how a DQN is trained. 
+The following flowchart shows a brief review of how a DQN (or DDQN) is trained. 
 
 <p align="center">
   <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/DQN_algorithm.png?raw=true", width="600"/>

@@ -31,7 +31,7 @@ For DRL documents, go to directory: `notes/DRL/`. The order of documents (`.md` 
 2. [DQN](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/DQN.md)
 3. [PG](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/Policy-Gradients.md)
 
-After reviewing the notes, for DRL scripts, go to directory: `samples/DRL/`.The order of codes (`.py` files) is as follows:
+After reviewing the notes, for DRL scripts, go to directory: `samples/DRL/`.The order of codes (`.py` files) is as follows. This is how I dicumented the codes and the code comments are continued in this order:
 
 1. [PG Agent (tf2)](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/reinforce/tf2_policy_gradient_agent.py) (---> 
 [network](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/reinforce/tf2_policy_gradient_network.py) -
@@ -43,6 +43,7 @@ After reviewing the notes, for DRL scripts, go to directory: `samples/DRL/`.The 
 
 3. [Simple DDQN Agent with CNN (keras)](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/DQN/keras_ddqn_cnn_agent.py)  (Make sure to see the [trainging](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/DQN/keras_ddqn_cnn_training.py) code)
 
+4. [Simple DQN Agent (keras)](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/DQN/keras_dqn_agent.py)  (---> [trainging](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/DQN/keras_dqn_training.py) code)
 
 
 ## Summary of Resources

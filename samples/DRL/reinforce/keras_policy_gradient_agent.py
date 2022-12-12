@@ -64,7 +64,7 @@ class Agent(object):
         # policy function actually returns). Thus, a 'softmax' activation function is required (
         # -> LINK-6).
 
-        # TOPIC: (DRL) A Custom Loss Function in Keras (no tf)
+        # TOPIC: (DRL/GEN) A Custom Loss Function in Keras (no tf)
         # The desired loss function for this policy-function-estimator network is not present in 
         # keras. Thus, it is defined here. No other part of the class needs access to this function. 
         # So a nested function is defined.
@@ -90,7 +90,7 @@ class Agent(object):
 
         policy.compile(optimizer=Adam(lr=self.lr), loss=custom_loss)
 
-        # TOPIC: Defining the mirror network in DRL
+        # TOPIC: (DRL/PG) Defining a mirror network
         # Not that, during training the first network, the weights are to be updated online. While 
         # the second network (mirror) is just to be used to do the predictions. So, the inputs to two 
         # networks are different. 
@@ -142,7 +142,8 @@ class Agent(object):
         action_memory = np.array(self.action_memory)
         reward_memory = np.array(self.reward_memory)
 
-        # TOPIC: Performing One-Hot Encoding on the Network Outputs
+        # TAG-1
+        # TOPIC: (DRL/GEN) Performing One-Hot Encoding on the Network Outputs
         # Each single-action (referred to a time-step) is one-hot encoded. For more details, refer to
         # LINK-8
         # 
@@ -162,7 +163,7 @@ class Agent(object):
                 discount *= self.gamma
             G[t] = G_sum
         
-        # TOPIC: Zero-Based Normalization on Network Inputs
+        # TOPIC: (DRL/GEN) Zero-Based Normalization on Network Inputs
         # A zero-based normalization is done on the discounted rewards. That's because generally, the
         # rewards may be much different; Thus must be normalized
         # 
@@ -172,10 +173,10 @@ class Agent(object):
         # 
         # The second line is to avoid "devide-by-zero" situation
 
-        # TOPIC: Network Inputs in DRL
-        # Notice that the network which is being trained online receives two inputs: time history of 
-        # states (observations) and rewards. Despite the mirrored network which is used in evaluation 
-        # and only receives the states
+        # TOPIC: (DRL/PG) Network Inputs in DRL
+        # Notice that the network which is being trained online receives two inputs: time history 
+        # of states (observations) and rewards. Despite the mirrored network which is used in 
+        # evaluation and only receives the states
         # 
         cost = self.policy.train_on_batch([state_memory, self.G], actions)
 

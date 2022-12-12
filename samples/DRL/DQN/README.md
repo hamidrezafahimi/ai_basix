@@ -27,3 +27,6 @@ Rferenced links;
 [LINK-12](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/reinforce/tf2_policy_gradient_agent.py)
 
 [LINK-13](https://github.com/hamidrezafahimi/ann_basix/blob/master/platforms/gym/modification_on_2d_env.py)
+
+[LINK-14](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/reinforce/keras_policy_gradient_agent.py)
+
