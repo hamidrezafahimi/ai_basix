@@ -8,17 +8,16 @@
     - [Modification2:Replay_Buffer](#section-id-81)
     - [Modification 3: $psilongreedy policy for taking actions](#section-id-89)
     - [Final Revised DQN Algorithm](#section-id-102)
-    - [Loss function](#section-id-118)
-    - [Consideration of Movement in Environment](#section-id-127)
-    - [Implementation Hints](#section-id-132)
-  - [Limitations of DQN](#section-id-147)
-  - [Different Types of DQN](#section-id-154)
-    - [Simple DQN](#section-id-158)
-    - [DQN with Experience Replay](#section-id-162)
-    - [Double DQN](#section-id-168)
-    - [Dueling DQN](#section-id-172)
-    - [Dueling Double DQN](#section-id-175)
-    - [Noisy DQN](#section-id-178)
+    - [Loss function](#section-id-125)
+    - [Consideration of Movement in Environment](#section-id-134)
+    - [Implementation Hints](#section-id-139)
+  - [Limitations of DQN](#section-id-154)
+  - [Different Types of DQN](#section-id-161)
+    - [Simple DQN](#section-id-165)
+    - [DQN with Experience Replay](#section-id-169)
+    - [Double DQN](#section-id-175)
+    - [Dueling DQN](#section-id-181)
+    - [Noisy DQN](#section-id-201)
   
 
 
@@ -49,7 +48,7 @@ $$
 The pseudo code for the traditional Q-learning algorithm is depicted in the following. 
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/traditional_Q_learning.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/data/figs/traditional_Q_learning.png?raw=true", width="600"/>
 </p>
 
 For more details refer [here](https://www.youtube.com/watch?v=D3b50jrKzcc&t=497s)
@@ -61,14 +60,14 @@ For more details refer [here](https://www.youtube.com/watch?v=D3b50jrKzcc&t=497s
 As mentioned before, the traditional Q-Learning algorithm works by keeping (real-time generation of) a table. This method only works for environments with discrete and limited number of states and actions. To work with continuous state spaces or huge number of discrete states, the only practical way to solve the problem is to use a deep neural network as the approximation of the Q-function, returning a set of discrete values each corresponding to a specific action.
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/q-learning.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/data/figs/q-learning.png?raw=true", width="600"/>
 </p>
 
 During the training, the DQN agent uses the difference with maximal action and current action (-?-) as the loss function to update the network parameters in real-time.
 In the following figure, note that the function Q(s,a) is approximated with a neural network. Also, notice the loss function and back propagation step in the last two lines.
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/dql.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/data/figs/dql.png?raw=true", width="600"/>
 </p>
 
 The **optimization approach** is based on Gradient Descent:
@@ -80,7 +79,7 @@ $$
 The **loss function** is based on MSE:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/q_learning_loss_function.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/data/figs/q_learning_loss_function.png?raw=true", width="600"/>
 </p>
 
 For more details refer [here](https://www.youtube.com/watch?v=D3b50jrKzcc&t=875s).
@@ -109,7 +108,7 @@ There are two calls to Q() function (network) in the above algorithm. A copy of 
 The following visualizes the difference between the two networks:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/dqn_target_eval.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/data/figs/dqn_target_eval.png?raw=true", width="600"/>
 </p>
 
 <div id='section-id-81'/>
@@ -144,41 +143,48 @@ From an initial state, all the transitions ("action->state"s) for a non-trained 
 There is a good explanation of this algorithm [here](https://www.youtube.com/watch?v=4GhH3d9NsIc&t=348s).
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/revised_dqn.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/data/figs/revised_dqn.png?raw=true", width="600"/>
 </p>
 
-The following flowchart shows a brief review of how a DQN (or DDQN) is trained. 
+The following flowchart shows a brief review of how a DQN (or DDQN, or Dueling DDQN) is trained. 
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/DQN_algorithm.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/data/figs/DQN_algorithm.png?raw=true", width="600"/>
 </p>
+
+With consideration of the following table, the above flowchart can be generalized to DDQN and Dueling DDQN. 
+
+|                |                DQN                |                            DDQN                            |                        Dueling DDQN                        |
+|----------------|:---------------------------------:|:----------------------------------------------------------:|:----------------------------------------------------------:|
+| Two Networks   | Q_target and Q_eval  are the same | Q_eval is Assigned to Q_target in a  Specific Set of Steps | Q_eval is Assigned to Q_target in a  Specific Set of Steps |
+| Network Output | (Q) = (V) = (A)                   | (Q) = (V) = (A)                                            | (Q) = (V)+(A)                                              |
 
 Remember that the *target* is the direction in which we want the weights of the DNN change.
 
-<div id='section-id-118'/>
+<div id='section-id-125'/>
 
 ### Loss function
 
 The actual loss function considered in a DQN is *Huber Loss*. The green curve in the following figure:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/dqn_loss_func.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/data/figs/dqn_loss_func.png?raw=true", width="600"/>
 </p>
 
 
-<div id='section-id-127'/>
+<div id='section-id-134'/>
 
 ### Consideration of Movement in Environment
 
 To understand the effect of changes in the environment, consider an environment in which the states contain changes through time. If the states in such environment are defined in particular data packs (e.g. images),to train the agent how to choose actions when there are changes in the environment, the training is done on a batch of data packs (images) instead of a single pack (image).
 
 
-<div id='section-id-132'/>
+<div id='section-id-139'/>
 
 ### Implementation Hints
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/dqn_implementation_hints.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/data/figs/dqn_implementation_hints.png?raw=true", width="600"/>
 </p>
 
 <!-- ## DQN Architecture
@@ -186,11 +192,11 @@ To understand the effect of changes in the environment, consider an environment 
 A DQ-Network (DQN) is created of two convolutional and two dense layers, as follows:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/dqn_architecture.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/data/figs/dqn_architecture.png?raw=true", width="600"/>
 </p> -->
 
 
-<div id='section-id-147'/>
+<div id='section-id-154'/>
 
 ## Limitations of DQN
 
@@ -199,19 +205,19 @@ DQN works in problems with descritized action space. If the actions are to be ta
 DQN doesn't learn stochastic policies, because the outputs are provided deterministically from the Q-function, i.e., the outputs are the value for the actions, not the probability for the optimality of the actions in terms of reward. This is obtained using a *Policy-Based RL*.
 
 
-<div id='section-id-154'/>
+<div id='section-id-161'/>
 
 ## Different Types of DQN
 
-There are different supplements each of which, if added to a DQN, making a new type of solution with custom properties. Thus, a DQN solution may be one of the followings. Note that the [previously shown flowchart](https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/DQN_algorithm.png) depicts enough info to understand the algorithm for the following fisrt 3-items.
+There are different supplements each of which, if added to a DQN, making a new type of solution with custom properties. Thus, a DQN solution may be one of the followings. Note that the [previously shown flowchart](https://github.com/hamidrezafahimi/ai_basix/blob/master/data/figs/DQN_algorithm.png) depicts enough info to understand the algorithm for the following fisrt 3-items.
 
-<div id='section-id-158'/>
+<div id='section-id-165'/>
 
 ### Simple DQN
 
 It is only the main idea of Q-Learning implemented such that the Q-function is approximated with a deep neural network. [Here]() is the raw algorithm for DQN.
 
-<div id='section-id-162'/>
+<div id='section-id-169'/>
 
 ### DQN with Experience Replay 
 
@@ -219,22 +225,38 @@ It is only the main idea of Q-Learning implemented such that the Q-function is a
 
 The most simple implementations of DQN consider the first modification which was reviewed [above](#Modification2:Replay_Buffer). 
 
-<div id='section-id-168'/>
+<div id='section-id-175'/>
 
 ### Double DQN
 
+[code sample](https://github.com/hamidrezafahimi/ai_basix/blob/master/samples/DRL/DQN/keras_ddqn_agent.py)
+
 In a double DQN, the modification 2 (reviewed [above](#Modification1:Double_DQN)) is taken into the consideration.
 
-<div id='section-id-172'/>
+<div id='section-id-181'/>
 
 ### Dueling DQN
 
+[code sample](https://github.com/hamidrezafahimi/ai_basix/blob/master/samples/DRL/DQN/tf2_dueling_ddqn_agent.py)
+[reference for text](https://medium.com/@awjuliani/simple-reinforcement-learning-with-tensorflow-part-4-deep-q-networks-and-beyond-8438a3e2b8df)
 
-<div id='section-id-175'/>
+The Q-values that we have been discussing so far correspond to how good it is to take a certain action given a certain state. This can be written as Q(s,a). This action given state can actually be decomposed into two more fundamental notions of value. The first is the value function V(s), which says simple how good it is to be in any given state. The second is the advantage function A(a), which tells how much better taking a certain action would be compared to the others. We can then think of Q as being the combination of V and A. More formally:
 
-### Dueling Double DQN
+$$
+Q(s,a) = V(s) + A(a)
+$$
+
+Why we use such an architecture: imagine sitting outside in a park watching the sunset. It is beautiful, and highly rewarding to be sitting there. No action needs to be taken, and it doesn’t really make sense to think of the value of sitting there as being conditioned on anything beyond the environmental state you are in. We can achieve more robust estimates of state value by decoupling it from the necessity of being attached to specific actions.
+
+In the following figure, the above demonstrates a regular DQN with a single stream for Q-values, and below, deonstrates a Dueling DQN where the value and advantage are calculated separately and then combined only at the final layer into a Q value.
+
+<p align="center">
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/data/figs/dueling_dqn_architecture.png?raw=true", width="600"/>
+</p>
 
 
-<div id='section-id-178'/>
+<div id='section-id-201'/>
 
 ### Noisy DQN
+
+...

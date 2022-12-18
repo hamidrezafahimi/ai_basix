@@ -1,5 +1,5 @@
 
-This can be both a starting point for the development of artificial neural network algorithms, and a handbook containing introductory to advanced tools and solutions in this field. I have recently started documenting everything I have learned (and am learning) in the area. Soon I'll develope it much more. 
+This can be both a starting point for the development of artificial intelligence (including artificial neural network) algorithms, and a handbook containing introductory to advanced tools and solutions in this field. I have recently started documenting everything I have learned (and am learning) in the area. Soon I'll develope it much more. 
 
 ## Overall Review of Context
 

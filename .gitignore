@@ -9,7 +9,8 @@ __pycache__/
 *.png
 logs/
 temp/
-data/
+data/logs/*
+data/models/*
 !data/figs/*.png
 !*/README.md
 !*/*/README.md
