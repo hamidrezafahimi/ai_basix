@@ -7,7 +7,9 @@ __pycache__/
 *.jpeg
 *.pyc
 *.png
-!figs/*.png
 logs/
 temp/
+data/
+!data/figs/*.png
 !*/README.md
+!*/*/README.md

@@ -3,6 +3,14 @@ from keras.models import Sequential, load_model
 from keras.optimizers import Adam
 import numpy as np
 
+# This is a DDQN agent, developed on keras (not tf2!)
+
+# To access each "LINK", read the "README.md" in the current folder.
+
+# NOTE: The last DRL code sample has been the LINK-15 (agent) and LINK-16 (training). Thus, the 
+# code comments are continued from there
+
+
 class ReplayBuffer(object):
     def __init__(self, max_size, input_shape, n_actions, discrete=False):
         self.mem_size = max_size
@@ -86,6 +94,10 @@ class DDQNAgent(object):
 
         return action
 
+
+    # TOPIC: (DRL/DQN) DDQN Learning Algorithm - keras
+    # ...
+    # 
     def learn(self):
         if self.memory.mem_cntr > self.batch_size:
             state, action, reward, new_state, done = \
@@ -104,6 +116,8 @@ class DDQNAgent(object):
 
             batch_index = np.arange(self.batch_size, dtype=np.int32)
 
+            # TAG-1
+            # 
             q_target[batch_index, action_indices] = reward + \
                     self.gamma*q_next[batch_index, max_actions.astype(int)]*done
 

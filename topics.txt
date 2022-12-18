@@ -1,16 +1,16 @@
 platforms/gym/modification_on_2d_env.py
-63:# TOPIC: (DRL) Modification on a "gym 2d env" For DRL Training
-110:# TOPIC: (GYM) How to Convert an Ordinary Environment's States to State-Buffers for Motion Sensing
+29:# TOPIC: (DRL) Modification on a "gym 2d env" For DRL Training
+76:# TOPIC: (GYM) How to Convert an Ordinary Environment's States to State-Buffers for Motion Sensing
 platforms/tensorflow/keras/01_custom_network_implementation.py
 31:# TOPIC: (GEN) Ensambeled Network Design in tf2
+samples/DRL/DQN/keras_ddqn_agent.py
+98:    # TOPIC: (DRL/DQN) DDQN Learning Algorithm - keras
 samples/DRL/DQN/keras_ddqn_cnn_agent.py
 19:        # TOPIC: (DRL/GEN) State-Memory for Environment with Motion
 70:# TOPIC: (DRL/DQN) CNN Network for agent with input states as images
 76:    # TOPIC: (DRL/DQN) The Structure of a Convolutional Layer in DQN
 79:    # TOPIC: (DRL/DQN) Training Agent with Time-Varying Environment and CNN Brain
-104:# TOPIC: (DRL/DQN) A Simple DDQN Agent - keras
-126:        # TOPIC: Input 2D (Image) Observarion to a DRL Agent in Environment with Motion
-179:    # TOPIC: (DRL/DQN) DDQN Learning Algorithm - keras
+124:        # TOPIC: Input 2D (Image) Observarion to a DRL Agent in Environment with Motion
 samples/DRL/DQN/keras_ddqn_cnn_training.py
 45:    # TOPIC: (DRL/DQN) DQN Training Algorithm
 samples/DRL/DQN/keras_dqn_agent.py
@@ -24,6 +24,10 @@ samples/DRL/DQN/tf2_dqn_agent.py
 150:    # TOPIC: (DRL) Epsilon-Greedy Action Selection
 161:    # TOPIC: (DRL) Practical Difference Between Value-Based and Policy-Based DRL
 176:        # TOPIC: (DRL/DQN) Simple DQN Learning Algorithm
+samples/DRL/DQN/tf2_dueling_ddqn_agent.py
+14:# TOPIC: (DRL/DQN) Dueling DQN Network Architecture
+120:# TOPIC: (DRL/DQN) A Dueling DQN Agent 
+166:    # TOPIC: (DRL/DQN) DDQN Learning Algorithm - tf2
 samples/DRL/reinforce/keras_policy_gradient_agent.py
 67:        # TOPIC: (DRL/GEN) A Custom Loss Function in Keras (no tf)
 93:        # TOPIC: (DRL/PG) Defining a mirror network
@@ -46,16 +50,15 @@ samples/MLP/tf_02_first_nn_implementation.py
 158:# TOPIC: (MLP) Model Evaluation in tf2
 164:# TOPIC: (MLP) Using the Model in tf2
 topics.txt
-2:63:# TOPIC: (DRL) Modification on a "gym 2d env" For DRL Training
-3:110:# TOPIC: (GYM) How to Convert an Ordinary Environment's States to State-Buffers for Motion Sensing
+2:29:# TOPIC: (DRL) Modification on a "gym 2d env" For DRL Training
+3:76:# TOPIC: (GYM) How to Convert an Ordinary Environment's States to State-Buffers for Motion Sensing
 5:31:# TOPIC: (GEN) Ensambeled Network Design in tf2
-7:19:        # TOPIC: (DRL/GEN) State-Memory for Environment with Motion
-8:70:# TOPIC: (DRL/DQN) CNN Network for agent with input states as images
-9:76:    # TOPIC: (DRL/DQN) The Structure of a Convolutional Layer in DQN
-10:79:    # TOPIC: (DRL/DQN) Training Agent with Time-Varying Environment and CNN Brain
-11:104:# TOPIC: (DRL/DQN) A Simple DDQN Agent - keras
-12:126:        # TOPIC: Input 2D (Image) Observarion to a DRL Agent in Environment with Motion
-13:179:    # TOPIC: (DRL/DQN) DDQN Learning Algorithm - keras
+7:98:    # TOPIC: (DRL/DQN) DDQN Learning Algorithm - keras
+9:19:        # TOPIC: (DRL/GEN) State-Memory for Environment with Motion
+10:70:# TOPIC: (DRL/DQN) CNN Network for agent with input states as images
+11:76:    # TOPIC: (DRL/DQN) The Structure of a Convolutional Layer in DQN
+12:79:    # TOPIC: (DRL/DQN) Training Agent with Time-Varying Environment and CNN Brain
+13:124:        # TOPIC: Input 2D (Image) Observarion to a DRL Agent in Environment with Motion
 15:45:    # TOPIC: (DRL/DQN) DQN Training Algorithm
 17:30:        # TOPIC: (DRL/GEN) When is One-Hot Encoding Necessary?
 18:42:            # TOPIC: (DRL/GEN) Performing One-Hot Encoding on the Network Outputs
@@ -66,8 +69,6 @@ topics.txt
 24:150:    # TOPIC: (DRL) Epsilon-Greedy Action Selection
 25:161:    # TOPIC: (DRL) Practical Difference Between Value-Based and Policy-Based DRL
 26:176:        # TOPIC: (DRL/DQN) Simple DQN Learning Algorithm
-28:67:        # TOPIC: (DRL/GEN) A Custom Loss Function in Keras (no tf)
-29:93:        # TOPIC: (DRL/PG) Defining a mirror network
-30:146:        # TOPIC: (DRL/GEN) Performing One-Hot Encoding on the Network Outputs
-31:166:        # TOPIC: (DRL/GEN) Zero-Based Normalization on Network Inputs
-32:176:        # TOPIC: (DRL/PG) Network Inputs in DRL
+28:14:# TOPIC: (DRL/DQN) Dueling DQN Network Architecture
+29:120:# TOPIC: (DRL/DQN) A Dueling DQN Agent 
+30:166:    # TOPIC: (DRL/DQN) DDQN Learning Algorithm - tf2

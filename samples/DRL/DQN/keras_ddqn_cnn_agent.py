@@ -101,8 +101,6 @@ def build_dqn(lr, n_actions, input_dims, fc1_dims):
 
 
 
-# TOPIC: (DRL/DQN) A Simple DDQN Agent - keras
-# 
 class Agent(object):
     def __init__(self, alpha, gamma, n_actions, epsilon, batch_size, replace,
                  input_dims, eps_dec=0.996,  eps_min=0.01,
@@ -176,7 +174,6 @@ class Agent(object):
         return action
 
 
-    # TOPIC: (DRL/DQN) DDQN Learning Algorithm - keras
     # What is not commented has been described previously in LINK-6
     # 
     def learn(self):

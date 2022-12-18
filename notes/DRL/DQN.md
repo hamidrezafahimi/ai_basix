@@ -49,7 +49,7 @@ $$
 The pseudo code for the traditional Q-learning algorithm is depicted in the following. 
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/traditional_Q_learning.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/traditional_Q_learning.png?raw=true", width="600"/>
 </p>
 
 For more details refer [here](https://www.youtube.com/watch?v=D3b50jrKzcc&t=497s)
@@ -61,14 +61,14 @@ For more details refer [here](https://www.youtube.com/watch?v=D3b50jrKzcc&t=497s
 As mentioned before, the traditional Q-Learning algorithm works by keeping (real-time generation of) a table. This method only works for environments with discrete and limited number of states and actions. To work with continuous state spaces or huge number of discrete states, the only practical way to solve the problem is to use a deep neural network as the approximation of the Q-function, returning a set of discrete values each corresponding to a specific action.
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/q-learning.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/q-learning.png?raw=true", width="600"/>
 </p>
 
 During the training, the DQN agent uses the difference with maximal action and current action (-?-) as the loss function to update the network parameters in real-time.
 In the following figure, note that the function Q(s,a) is approximated with a neural network. Also, notice the loss function and back propagation step in the last two lines.
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/dql.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/dql.png?raw=true", width="600"/>
 </p>
 
 The **optimization approach** is based on Gradient Descent:
@@ -80,7 +80,7 @@ $$
 The **loss function** is based on MSE:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/q_learning_loss_function.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/q_learning_loss_function.png?raw=true", width="600"/>
 </p>
 
 For more details refer [here](https://www.youtube.com/watch?v=D3b50jrKzcc&t=875s).
@@ -109,7 +109,7 @@ There are two calls to Q() function (network) in the above algorithm. A copy of 
 The following visualizes the difference between the two networks:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/dqn_target_eval.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/dqn_target_eval.png?raw=true", width="600"/>
 </p>
 
 <div id='section-id-81'/>
@@ -144,13 +144,13 @@ From an initial state, all the transitions ("action->state"s) for a non-trained 
 There is a good explanation of this algorithm [here](https://www.youtube.com/watch?v=4GhH3d9NsIc&t=348s).
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/revised_dqn.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/revised_dqn.png?raw=true", width="600"/>
 </p>
 
 The following flowchart shows a brief review of how a DQN (or DDQN) is trained. 
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/DQN_algorithm.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/DQN_algorithm.png?raw=true", width="600"/>
 </p>
 
 Remember that the *target* is the direction in which we want the weights of the DNN change.
@@ -162,7 +162,7 @@ Remember that the *target* is the direction in which we want the weights of the 
 The actual loss function considered in a DQN is *Huber Loss*. The green curve in the following figure:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/dqn_loss_func.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/dqn_loss_func.png?raw=true", width="600"/>
 </p>
 
 
@@ -178,7 +178,7 @@ To understand the effect of changes in the environment, consider an environment 
 ### Implementation Hints
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/dqn_implementation_hints.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/dqn_implementation_hints.png?raw=true", width="600"/>
 </p>
 
 <!-- ## DQN Architecture
@@ -186,7 +186,7 @@ To understand the effect of changes in the environment, consider an environment 
 A DQ-Network (DQN) is created of two convolutional and two dense layers, as follows:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/dqn_architecture.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/dqn_architecture.png?raw=true", width="600"/>
 </p> -->
 
 
@@ -203,7 +203,7 @@ DQN doesn't learn stochastic policies, because the outputs are provided determin
 
 ## Different Types of DQN
 
-There are different supplements each of which, if added to a DQN, making a new type of solution with custom properties. Thus, a DQN solution may be one of the followings. Note that the [previously shown flowchart](https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/DQN_algorithm.png) depicts enough info to understand the algorithm for the following fisrt 3-items.
+There are different supplements each of which, if added to a DQN, making a new type of solution with custom properties. Thus, a DQN solution may be one of the followings. Note that the [previously shown flowchart](https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/DQN_algorithm.png) depicts enough info to understand the algorithm for the following fisrt 3-items.
 
 <div id='section-id-158'/>
 
@@ -215,7 +215,7 @@ It is only the main idea of Q-Learning implemented such that the Q-function is a
 
 ### DQN with Experience Replay 
 
-[code sample](https://github.com/hamidrezafahimi/ann_basix/blob/master/samples/DRL/DQN/tf2_dqn_agent.py)
+[code sample](https://github.com/hamidrezafahimi/ai_basix/blob/master/samples/DRL/DQN/tf2_dqn_agent.py)
 
 The most simple implementations of DQN consider the first modification which was reviewed [above](#Modification2:Replay_Buffer). 
 

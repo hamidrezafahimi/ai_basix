@@ -65,3 +65,13 @@ source ~/tensorflow-dev/venv/bin/activate
 ```
 
 And then run your code.
+
+
+### Check if GPU is Available
+
+Run the following as a python script with your virtual environment activated:
+
+```
+import tensorflow as tf
+print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
+```

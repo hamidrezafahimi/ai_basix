@@ -38,7 +38,7 @@ The structure of reinforcement leaning paradigm is based on *reward* and *punish
 
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/rl_loop.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/rl_loop.png?raw=true", width="600"/>
 </p>
 
 
@@ -57,7 +57,7 @@ I.e., future is independent of past, given present.
 The concept of *total reward* in the mentioned structure is shown in the following:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/rl_total_reward.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/rl_total_reward.png?raw=true", width="600"/>
 </p>
 
 To avoid an infinite total reward:
@@ -70,7 +70,7 @@ The above, is called the *Discounted Sum of Future Rewards* (Sometimes I abbrevi
 During training phase a DRL solution, the above statement is calculated for all time-steps of each episode, to be used in the training. A schmatics of this algorithm is depicted in the following:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/G_calc_in_PG.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/G_calc_in_PG.png?raw=true", width="600"/>
 </p>
 
 Discounting the future rewards until the end (like above) has two advantages:
@@ -95,7 +95,7 @@ An MDP is defined by five properties: (S, A, R, P, $\gamma$)
 The following graph is an example an MDP. For each state, there are allowed actions. For each allowed action, there is resulting states with certain probabilities for each.
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/mdp-graph.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/mdp-graph.png?raw=true", width="600"/>
 </p>
 
 
@@ -107,7 +107,7 @@ The following graph is an example an MDP. For each state, there are allowed acti
 A *Policy* is a "state -> action" function, determining what are the choices of action in each state, i.e. A policy is a probability distribution which the agent uses to pick actions. It is actually the solution of s reinforcement learning problem. An example:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_function.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/policy_function.png?raw=true", width="600"/>
 </p>
 
 In the above, the table cells are the states and movement in 4 directions is the action.
@@ -131,7 +131,7 @@ These are the major parts of a reinforcement learning problem:
 4- *Training Algorithm* - Is done in the same time as testing is done
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/rl_block_diagram.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/rl_block_diagram.png?raw=true", width="600"/>
 </p>
 
 In an RL problem, one must:
@@ -151,13 +151,13 @@ In an RL problem, one must:
 This is the main taxonomy of RL methods:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/major_rl_taxonomy.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/major_rl_taxonomy.png?raw=true", width="600"/>
 </p>
 
 In the above, the *model* means a *State Ttansition Function* that predict the next states and rewards during the next transition. Here are some examples of RL methods devided by two major fields, Model-Based or Model-Free:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/rl-taxonomy.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/rl-taxonomy.png?raw=true", width="600"/>
 </p>
 
 The main taxonomy of RLs, is based on *What an RL Agent May Learn*. There are three major fields:
@@ -185,7 +185,7 @@ Here is the main difference between the traditional RL and DRL:
 With help of deep neural networks (DNNs), the (numerous-descritized- or) continuous-state/action-space problems can be solved. Two major benefits of deep learning, **Representing** and **Comprehending** data, can be added to the major benefit of reinforcement learning, which is the **Action Ability** on an obtained understanding.
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/drl.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/drl.png?raw=true", width="600"/>
 </p>
 
 There are three main paradigms in DRL:
@@ -225,7 +225,7 @@ As follows, there are two utilities to get to an optimal policy: *Value-Function
 
 To master the value-based RL, first, take a look at the following fundamentals to find out what a value0function and Q-function are. Then, here is a table of contexts to be reviewd in the area:
 
-1. [Q-Learning (Fundamentals of Value-Based RL)](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/DQN.md)
+1. [Q-Learning (Fundamentals of Value-Based RL)](https://github.com/hamidrezafahimi/ai_basix/blob/master/notes/DRL/DQN.md)
 
 2. ...
 
@@ -236,7 +236,7 @@ To master the value-based RL, first, take a look at the following fundamentals t
 Starting at each state, there are lots of possible state trajectories (*episodes*) to get to desired target state. The expected value for are possibilities, is th *value* returned by a value function. For a simple 4-state problem, the values returned by a value function may be like the following. Knowing the aforementioned value for each state, helps deciding about the next step at each initial step. For example, in the following, considering the `S2` as a goal, starting at the state `S0`, is more optimal to go to `S1` rather than `S3`.
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/value_func.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/value_func.png?raw=true", width="600"/>
 </p>
 
 Bellman states a mathematical expression for the value function:
@@ -248,7 +248,7 @@ $$
 Leading to:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/val_func.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/val_func.png?raw=true", width="600"/>
 </p>
 
 The roll of $\gamma$ is explained [previously](#markovstate)
@@ -260,7 +260,7 @@ The roll of $\gamma$ is explained [previously](#markovstate)
 A Q-function retuens the expected value of possible rewards for all episodes, starting at a *each specific state* and *taking each specific action*.
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/Q_function.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/Q_function.png?raw=true", width="600"/>
 </p>
 
 *NOTE:* A value function can be determined having a Q-function. But the opposite is not true.
@@ -296,7 +296,7 @@ $$
 
 To get more details of these methods, here is a table of context:
 
-1. [PG (Basics of Policy-Based RL)](https://github.com/hamidrezafahimi/ann_basix/blob/master/notes/DRL/Policy-Gradients.md)
+1. [PG (Basics of Policy-Based RL)](https://github.com/hamidrezafahimi/ai_basix/blob/master/notes/DRL/Policy-Gradients.md)
 
 2. [DDPG]() ...
 
@@ -353,7 +353,7 @@ In these methods, the training (updating the network parameters) happens after p
 The following figure demonstrates the algorithm of training the DRL network in monte-carlo methods as a block diagram:
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/monte_carlo_schematics.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/monte_carlo_schematics.png?raw=true", width="600"/>
 </p>
 
 <div id='section-id-300'/>

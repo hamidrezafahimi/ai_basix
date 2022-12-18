@@ -19,7 +19,7 @@
 ## Policy-Based RL Methods
 
 <p align="center">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_based_RL.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/policy_based_RL.png?raw=true", width="600"/>
 </p>
 
 
@@ -30,13 +30,13 @@
 A conceptual representation of policy gradient (PG) algorithm would be:
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_based_rl_alg.png?raw=true", width="200"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/policy_based_rl_alg.png?raw=true", width="200"/>
 </p>
 
 Practically, the algorithm is implemented like the following:
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_based_rl_alg_2.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/policy_based_rl_alg_2.png?raw=true", width="600"/>
 </p>
 
 
@@ -102,24 +102,24 @@ $$
 ### More Detailed Math
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_1.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/policy_1.png?raw=true", width="600"/>
 </p>
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/policy_2.png?raw=true", width="600"/>
-</p>
-
-<p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/reinfoece_math_1.png?raw=true", width="400"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/policy_2.png?raw=true", width="600"/>
 </p>
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/reinfoece_math_2.png?raw=true", width="400"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/reinfoece_math_1.png?raw=true", width="400"/>
+</p>
+
+<p align="left">
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/reinfoece_math_2.png?raw=true", width="400"/>
 </p>
 
 So here is the gradient ascent parameter-update method:
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/reinfoece_math_3.png?raw=true", width="300"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/reinfoece_math_3.png?raw=true", width="300"/>
 </p>
 
 
@@ -130,13 +130,13 @@ So here is the gradient ascent parameter-update method:
 Breaking the above equations, is done in the the followings:
 
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/j_brake_1.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/j_brake_1.png?raw=true", width="600"/>
 </p>
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/j_brake_2.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/j_brake_2.png?raw=true", width="600"/>
 </p>
 <p align="left">
-  <img src="https://github.com/hamidrezafahimi/ann_basix/blob/master/figs/j_brake_3.png?raw=true", width="600"/>
+  <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/figs/j_brake_3.png?raw=true", width="600"/>
 </p>
 
 The last expression shows no effect of environment in J function. Thus, the optimization based on this method is totally independent of the enviroment.

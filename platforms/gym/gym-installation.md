@@ -18,4 +18,6 @@ sudo apt-get update
 sudo apt-get install python3-pygame
 
 pip3 install pgzero
+
+pip install Box2D
 ```
