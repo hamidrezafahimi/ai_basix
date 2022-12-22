@@ -1,4 +1,4 @@
-platforms/gym/modification_on_2d_env.py
+platforms/gym/code/modification_on_2d_env.py
 29:# TOPIC: (DRL) Modification on a "gym 2d env" For DRL Training
 76:# TOPIC: (GYM) How to Convert an Ordinary Environment's States to State-Buffers for Motion Sensing
 platforms/tensorflow/keras/01_custom_network_implementation.py
@@ -72,3 +72,8 @@ topics.txt
 28:14:# TOPIC: (DRL/DQN) Dueling DQN Network Architecture
 29:120:# TOPIC: (DRL/DQN) A Dueling DQN Agent 
 30:166:    # TOPIC: (DRL/DQN) DDQN Learning Algorithm - tf2
+32:67:        # TOPIC: (DRL/GEN) A Custom Loss Function in Keras (no tf)
+33:93:        # TOPIC: (DRL/PG) Defining a mirror network
+34:146:        # TOPIC: (DRL/GEN) Performing One-Hot Encoding on the Network Outputs
+35:166:        # TOPIC: (DRL/GEN) Zero-Based Normalization on Network Inputs
+36:176:        # TOPIC: (DRL/PG) Network Inputs in DRL

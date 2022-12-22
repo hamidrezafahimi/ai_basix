@@ -1,33 +1,7 @@
-### Summary 
-
-- [Deep Q-Learning (DQN): A Value-Based RL Method](#section-id-2)
-  - [Raw DQN Algorithm](#section-id-6)
-  - [Revised (Practical) DQN](#section-id-37)
-    - [Modification1:Double_DQN](#section-id-41)
-    - [Modification2:Replay_Buffer](#section-id-58)
-    - [Modification 3: $psilongreedy policy for taking actions](#section-id-66)
-    - [Final Revised DQN Algorithm](#section-id-79)
-    - [Loss function](#section-id-102)
-    - [Consideration of Movement in Environment](#section-id-111)
-    - [Implementation Hints](#section-id-116)
-  - [Limitations of DQN](#section-id-131)
-  - [Different Types of DQN](#section-id-138)
-    - [Simple DQN](#section-id-142)
-    - [DQN with Experience Replay](#section-id-146)
-    - [Double DQN](#section-id-152)
-    - [Dueling DQN](#section-id-158)
-    - [Noisy DQN](#section-id-178)
-  
-
-
-
-<div id='section-id-2'/>
 
 # Deep Q-Learning (DQN): A Value-Based RL Method
 
 *Q-Learning* is one of the most important samples of Value-Based reinforcement learning. Just like all the value-based RL methods, a mapping of *state/actions* to *rewards* is approximated. The [Tradiotional Q-Learning Algorithm](https://github.com/hamidrezafahimi/ai_basix/blob/master/notes/RL/Q-learning.md) has been reviewd separately. Here, the solution of the same problem in DNN is reviewed.
-
-<div id='section-id-6'/>
 
 ## Raw DQN Algorithm
 
@@ -60,13 +34,9 @@ For more details refer [here](https://www.youtube.com/watch?v=D3b50jrKzcc&t=875s
 
 
 
-<div id='section-id-37'/>
-
 ## Revised (Practical) DQN
 
 According to the the last section, two major issues exist in the problem. Next sections presents solutions and additional refinements to make a DQN converge.
-
-<div id='section-id-41'/>
 
 ### Modification1:Double_DQN
 
@@ -85,8 +55,6 @@ The following visualizes the difference between the two networks:
   <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/data/figs/dqn_target_eval.png?raw=true", width="600"/>
 </p>
 
-<div id='section-id-58'/>
-
 ### Modification2:Replay_Buffer
 
 **Issue-2 In Loss Function (target):** The main assumption in solving the bellman equation, is that the network inputs are independent of each other (IID). Calculating the loss function, a feedback is obtained while the inputs to the network are not IID.
@@ -94,8 +62,6 @@ The following visualizes the difference between the two networks:
 **SOLUTION: Experience Replay**
 From an initial state, all the transitions ("action->state"s) for a non-trained network are generated and buffered in a memory called an *Experience Replay*. A mini-batch of these data is used in training. This waye the inputs are IID because they are generated with a non-trained network. The experience replay is actually as same as the *dataset* which is known in neural network training.
 
-
-<div id='section-id-66'/>
 
 ### Modification 3: $\epsilon$-greedy policy for taking actions
 
@@ -109,8 +75,6 @@ From an initial state, all the transitions ("action->state"s) for a non-trained 
 - **The more closed to the end of the training**, *the better actions are chosen* (-> exploitation) 
 
 *NOTE:* You probably don't want to let the $\epsilon$ become zero. Because it's important to always test the agent's model of the environment.
-
-<div id='section-id-79'/>
 
 ### Final Revised DQN Algorithm
 
@@ -135,8 +99,6 @@ With consideration of the following table, the above flowchart can be generalize
 
 Remember that the *target* is the direction in which we want the weights of the DNN change.
 
-<div id='section-id-102'/>
-
 ### Loss function
 
 The actual loss function considered in a DQN is *Huber Loss*. The green curve in the following figure:
@@ -146,14 +108,10 @@ The actual loss function considered in a DQN is *Huber Loss*. The green curve in
 </p>
 
 
-<div id='section-id-111'/>
-
 ### Consideration of Movement in Environment
 
 To understand the effect of changes in the environment, consider an environment in which the states contain changes through time. If the states in such environment are defined in particular data packs (e.g. images),to train the agent how to choose actions when there are changes in the environment, the training is done on a batch of data packs (images) instead of a single pack (image).
 
-
-<div id='section-id-116'/>
 
 ### Implementation Hints
 
@@ -170,8 +128,6 @@ A DQ-Network (DQN) is created of two convolutional and two dense layers, as foll
 </p> -->
 
 
-<div id='section-id-131'/>
-
 ## Limitations of DQN
 
 DQN works in problems with descritized action space. If the actions are to be taken from a continuous range of cases, this is not gonna work!
@@ -179,19 +135,13 @@ DQN works in problems with descritized action space. If the actions are to be ta
 DQN doesn't learn stochastic policies, because the outputs are provided deterministically from the Q-function, i.e., the outputs are the value for the actions, not the probability for the optimality of the actions in terms of reward. This is obtained using a *Policy-Based RL*.
 
 
-<div id='section-id-138'/>
-
 ## Different Types of DQN
 
 There are different supplements each of which, if added to a DQN, making a new type of solution with custom properties. Thus, a DQN solution may be one of the followings. Note that the [previously shown flowchart](https://github.com/hamidrezafahimi/ai_basix/blob/master/data/figs/DQN_algorithm.png) depicts enough info to understand the algorithm for the following fisrt 3-items.
 
-<div id='section-id-142'/>
-
 ### Simple DQN
 
 It is only the main idea of Q-Learning implemented such that the Q-function is approximated with a deep neural network. [Here]() is the raw algorithm for DQN.
-
-<div id='section-id-146'/>
 
 ### DQN with Experience Replay 
 
@@ -199,15 +149,11 @@ It is only the main idea of Q-Learning implemented such that the Q-function is a
 
 The most simple implementations of DQN consider the first modification which was reviewed [above](#Modification2:Replay_Buffer). 
 
-<div id='section-id-152'/>
-
 ### Double DQN
 
 [code sample](https://github.com/hamidrezafahimi/ai_basix/blob/master/samples/DRL/DQN/keras_ddqn_agent.py)
 
 In a double DQN, the modification 2 (reviewed [above](#Modification1:Double_DQN)) is taken into the consideration.
-
-<div id='section-id-158'/>
 
 ### Dueling DQN
 
@@ -228,8 +174,6 @@ In the following figure, the above demonstrates a regular DQN with a single stre
   <img src="https://github.com/hamidrezafahimi/ai_basix/blob/master/data/figs/dueling_dqn_architecture.png?raw=true", width="600"/>
 </p>
 
-
-<div id='section-id-178'/>
 
 ### Noisy DQN
 
