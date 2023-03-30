@@ -77,3 +77,8 @@ topics.txt
 34:146:        # TOPIC: (DRL/GEN) Performing One-Hot Encoding on the Network Outputs
 35:166:        # TOPIC: (DRL/GEN) Zero-Based Normalization on Network Inputs
 36:176:        # TOPIC: (DRL/PG) Network Inputs in DRL
+38:42:        # TOPIC: (GEN) The Input to tf2's Dense Layers
+39:48:        # TOPIC: (DRL/PG) Using a Network in a Single Time-Step (forward pass):
+40:54:        # TOPIC: (DRL/PG) Probabilistic Action Selection 
+41:61:        # TOPIC: (DRL/PG) Passing Network Output (action) to OpenAI Gym
+42:89:        # TOPIC: (DRL/PG) How to Calculate Discounted Sum of Future Rewards (DSoFR) from Now On (G_t or R_t)

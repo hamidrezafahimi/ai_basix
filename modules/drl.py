@@ -58,7 +58,10 @@ def justPlayGym(envName, n_games, agent = None):
         print('episode: ', i,'score: %.2f' % score)
 
 
-def TDTrain(envName, agent, n_games, modelFolderName, filename):
+def TDTrain(envName, agent, n_games, modelFolderName, plotName, 
+            load_checkpoint=False,
+            save_checkpoint=True,
+            checkpoint_interval = 10):
 
     saveDir = gen.makeModelSaveDir(modelFolderName)
     logDir = gen.makeLogSaveDir(modelFolderName + "_log")
@@ -66,6 +69,9 @@ def TDTrain(envName, agent, n_games, modelFolderName, filename):
     env = gym.make(envName)
     ddqn_scores = []
     eps_history = []
+
+    if load_checkpoint:
+        agent.load_models()
 
     for i in range(n_games):
         t0 = time.time()
@@ -82,7 +88,13 @@ def TDTrain(envName, agent, n_games, modelFolderName, filename):
             # print('before learn')
             agent.learn()
             # print('after learn')
-        
+
+        if save_checkpoint and i > 0 and i % checkpoint_interval == 0:
+            try:
+                agent.save_model()
+            except:
+                agent.save_model(saveDir)
+
         eps_history.append(agent.epsilon)
         ddqn_scores.append(score)
 
@@ -90,8 +102,12 @@ def TDTrain(envName, agent, n_games, modelFolderName, filename):
         print('episode: ', i,'score: %.2f' % score,
               ' average score %.2f' % avg_score, ' time: %.2f' % (time.time() - t0))
 
-    agent.save_model(saveDir)
-    fileDir = logDir + filename
+    try:
+        agent.save_model()
+    except:
+        agent.save_model(saveDir)
+        
+    fileDir = logDir + plotName
 
     x = [i+1 for i in range(n_games)]
-    plotLearning(x, ddqn_scores, eps_history, filename)
+    plotLearning(x, ddqn_scores, eps_history, plotName)

@@ -118,7 +118,7 @@ class Agent():
         self.epsilon = self.epsilon - self.eps_dec \
                         if self.epsilon > self.eps_min else self.eps_min
 
-    def save_models(self):
+    def save_model(self):
         self.q_eval.save_checkpoint()
         self.q_next.save_checkpoint()
 
