@@ -58,7 +58,7 @@ def justPlayGym(envName, n_games, agent = None):
         print('episode: ', i,'score: %.2f' % score)
 
 
-def temporalDifferenceTrain(envName, agent, n_games, modelFolderName):
+def TDTrain(envName, agent, n_games, modelFolderName, filename):
 
     saveDir = gen.makeModelSaveDir(modelFolderName)
     logDir = gen.makeLogSaveDir(modelFolderName + "_log")
@@ -91,7 +91,7 @@ def temporalDifferenceTrain(envName, agent, n_games, modelFolderName):
               ' average score %.2f' % avg_score, ' time: %.2f' % (time.time() - t0))
 
     agent.save_model(saveDir)
-    filename = logDir + "lunarlander-dueling_ddqn.png"
+    fileDir = logDir + filename
 
     x = [i+1 for i in range(n_games)]
     plotLearning(x, ddqn_scores, eps_history, filename)

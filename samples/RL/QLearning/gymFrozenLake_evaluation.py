@@ -1,35 +1,105 @@
+import os
+# from io import StringIO
 import numpy as np
-import gym
-from gym.envs.toy_text.frozen_lake import generate_random_map
+# import gym
+# from gym.envs.toy_text.frozen_lake import generate_random_map
 import sys
 sys.path.insert(1, '../../../projects/env/gym_frozenLake_GUI')
-import envGUICreation
+sys.path.insert(2, '../../../modules')
+import envGUICreation as egc
+import gen
+# import time
 
-# This is a Q-Learning sample, based on the 'FrozenLake' environment of OpenAI Gym
+env = egc.GymGraphicalFrozenLake(envSize=(4,4), delay=0.001, show=True, logMode=False)
 
-# To access each "LINK", read the "README.md" in the current folder
 
-# The theroretical background for the algorithm is given in LINK-1
-# LINk-2 gives a good demonstration of the algorithm
-# Rference for the code: LINK-3
+action_size = env.env.action_space.n
+state_size = env.env.observation_space.n
 
-env.reset()
+qtable = np.zeros((state_size, action_size))
 
-for episode in range(5):
-    state = env.reset()
-    step = 0
+total_episodes = 200            # Total episodes
+learning_rate = 0.8           # Learning rate
+max_steps = 50                # Max steps per episode
+gamma = 0.95                  # Discounting rate
+
+# Exploration parameters
+epsilon = 1.0                 # Exploration rate
+max_epsilon = 1.0             # Exploration probability at start
+min_epsilon = 0.01            # Minimum exploration probability 
+decay_rate = 0.01             # Exponential decay rate for exploration prob
+
+# List of rewards
+rewards = []
+
+def epsilonGreedyPolicy(eps):
+
+    global env
+    # Choose an action a in the current world state (s)
+    # First we randomize a number
+    exp_exp_tradeoff = np.random.uniform(0, 1)
+
+    # If this number > greater than epsilon --> exploitation (taking the biggest Q value for
+    # this state)
+    if exp_exp_tradeoff > eps:
+        act = np.argmax(qtable[state,:])
+
+    # Else doing a random choice --> exploration
+    else:
+        act = env.env.action_space.sample()
+
+    return act
+
+
+def updateEpsilon(episode):
+
+    global min_epsilon, max_epsilon, decay_rate
+    return min_epsilon + (max_epsilon - min_epsilon)*np.exp(-decay_rate*episode)
+
+
+
+for episode in range(total_episodes):
+    # Reset the environment
+    state, _ = env.reset()
+    # step = 0
     done = False
-    print("****************************************************")
-    print("EPISODE ", episode)
+    total_rewards = 0
+    lgDir = logDir+"/episode_{}/".format(episode)
+    
+    if not os.path.exists(lgDir):
+        os.mkdir(lgDir)
+    
+    # env.logDir = logDir
 
     for step in range(max_steps):
-        env.render()
-        # Take the action (index) that have the maximum expected future reward given that state
-        action = np.argmax(qtable[state,:])
         
-        new_state, reward, done, info = env.step(action)
+        action = epsilonGreedyPolicy(epsilon)
+        # Take the action (a) and observe the outcome state(s') and reward (r)
+        new_state, reward, done, info, _ = env.step(action, state)
+        env.saveImages(lgDir)
+        # Update Q(s,a):= Q(s,a) + lr [R(s,a) + gamma * max Q(s',a') - Q(s,a)]
+        # qtable[new_state,:] : all the actions we can take from new state
+        qtable[state, action] = qtable[state, action] + learning_rate * (reward + gamma * np.max(qtable[new_state, :]) - qtable[state, action])
         
-        if done:
-            break
+        total_rewards += reward
+        
+        # Our new state is state
         state = new_state
-env.close()
+        
+        actionStr = logAction(action, print=False)
+        log(step+1, done, actionStr, new_state, epsilon, dir=lgDir)
+
+        # If done (if we're dead) : finish episode
+        env.logConsole()
+        if done == True: 
+            break
+        
+    episode += 1
+    # Reduce epsilon (because we need less and less exploration)
+    epsilon = updateEpsilon(episode)
+    rewards.append(total_rewards)
+
+    print("episode: {} - score: {}".format(episode, total_rewards))
+
+print ("Score over time: " +  str(sum(rewards)/total_episodes))
+print(qtable)

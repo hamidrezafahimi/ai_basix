@@ -6,7 +6,7 @@ env = gym.make('FrozenLake-v0', desc=generate_random_map(size=8))
 
 
 # Running a single episode:
-
+print(env.observation_space)
 state = env.reset()
 done = False
 score = 0 

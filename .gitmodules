@@ -1,0 +1,3 @@
+[submodule "submodules/SimpleMazeMDP"]
+	path = submodules/SimpleMazeMDP
+	url = https://github.com/hf28/SimpleMazeMDP.git

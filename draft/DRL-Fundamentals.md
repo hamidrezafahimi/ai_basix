@@ -123,9 +123,9 @@ In the above, the *model* means a *State Ttansition Function* that predict the n
 
 The main taxonomy of RLs, is based on *What an RL Agent May Learn*. There are three major fields:
 
-1.
-2.
-3.
+1. Value-Based RL
+2. Policy-Based RL
+3. Model-Based RL
 
 
 ## Traditional RL vs. DRL

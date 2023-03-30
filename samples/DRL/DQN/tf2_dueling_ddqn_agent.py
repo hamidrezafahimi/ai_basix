@@ -65,7 +65,7 @@ class DuelingDeepQNetwork(keras.Model):
     # subjected to each action
     # 
     def advantage(self, state):
-        
+
         x = self.dense1(state)
         x = self.dense2(x)
         A = self.A(x)

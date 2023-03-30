@@ -1,6 +1,8 @@
 
 
-Rferenced links;
+To test tf2, the file `tf2_dueling_ddqn_training.py` is more fresh.
+
+The links referenced in the code:
 
 [LINK-1](https://github.com/hamidrezafahimi/ai_basix/blob/master/notes/DRL/DQN.md) 
 

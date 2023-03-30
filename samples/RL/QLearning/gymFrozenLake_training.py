@@ -1,41 +1,68 @@
+import os
 # from io import StringIO
 import numpy as np
 # import gym
 # from gym.envs.toy_text.frozen_lake import generate_random_map
 import sys
 sys.path.insert(1, '../../../projects/env/gym_frozenLake_GUI')
+sys.path.insert(2, '../../../modules')
 import envGUICreation as egc
+import gen
+# import time
+
+
+
+logMode = True
+
+def log(index, done, action, nState, eps, dir):
+    
+    # global logDir
+    # if logDir is None:
+    #     return
+    with open(dir + "log.txt".format(index), 'a+') as f:
+        f.write("\n\n\n\nstep_{}:\n\n".format(index))
+        f.write(np.array2string(qtable))
+        f.write("\n\ndone: {}".format(done))
+        f.write("\naction: {}".format(action))
+        f.write("\nnew state: {}".format(nState))
+        f.write("\nepsilon: {}".format(eps))
+
+
+def logAction(action, print=True):
+
+    if action == 0:
+        log = "left"
+    elif action == 1:
+        log = "down"
+    elif action == 2:
+        log = "right"
+    elif action == 3:
+        log = "up"
+    
+    if print:
+        print("action:  " + log)
+    return log
+
+
+projectFolder = "q_learning_frozenLake_new"
+logDirFromRoot = "/data/logs/" + projectFolder
+gen.resetDir(gen.getRootDir()+logDirFromRoot)
+
+logDir = "../../.."+logDirFromRoot
+# logDir = None
+
+env = egc.GymGraphicalFrozenLake(envSize=(4,4), delay=0.001, show=False, logMode=logMode)
 
 # This is a Q-Learning sample, based on the 'FrozenLake' environment of OpenAI Gym
-
-#  ... sparate folders for different episodes! ...
-
-
-# To access each "LINK", read the "README.md" in the current folder
-
-# The theroretical background for the algorithm is given in LINK-1
-# LINk-2 gives a good demonstration of the algorithm
-# Rference for the code: LINK-3
-logDir = "../../../data/logs/q_learning_frozenLake/"
-logDir = None
-# logData = True
-
-# if logData:
-
-env = egc.GymGraphicalFrozenLake(envSize=(8,8), delay=0.1, saveDir=logDir)
 
 action_size = env.env.action_space.n
 state_size = env.env.observation_space.n
 
-# env = gym.make('FrozenLake-v0', desc=generate_random_map(size=8))
-# egc = envGUICreation.GymFrozenLakeGUICreator((8,8))
-# sys.stdout = buffer = StringIO()
-
 qtable = np.zeros((state_size, action_size))
 
-total_episodes = 3            # Total episodes
+total_episodes = 200            # Total episodes
 learning_rate = 0.8           # Learning rate
-max_steps = 99                # Max steps per episode
+max_steps = 50                # Max steps per episode
 gamma = 0.95                  # Discounting rate
 
 # Exploration parameters
@@ -73,29 +100,25 @@ def updateEpsilon(episode):
 
 
 
-def log(index, logDir=None):
-    
-    if logDir is None:
-        return
-    with open(logDir + "log_{}.txt".format(index), 'w') as f:
-        f.write(np.array2string(qtable))
-    
-    # env.save()
-
-
 for episode in range(total_episodes):
     # Reset the environment
-    state = env.reset()
+    state, _ = env.reset()
     # step = 0
     done = False
     total_rewards = 0
+    
+    lgDir = logDir+"/episode_{}/".format(episode)
+    if not os.path.exists(lgDir):
+        os.mkdir(lgDir)
+    
+    # env.logDir = logDir
 
     for step in range(max_steps):
         
         action = epsilonGreedyPolicy(epsilon)
         # Take the action (a) and observe the outcome state(s') and reward (r)
-        new_state, reward, done, info = env.step(action)
-
+        new_state, reward, done, info, _ = env.step(action, state)
+        env.saveImages(lgDir)
         # Update Q(s,a):= Q(s,a) + lr [R(s,a) + gamma * max Q(s',a') - Q(s,a)]
         # qtable[new_state,:] : all the actions we can take from new state
         qtable[state, action] = qtable[state, action] + learning_rate * (reward + gamma * np.max(qtable[new_state, :]) - qtable[state, action])
@@ -105,12 +128,15 @@ for episode in range(total_episodes):
         # Our new state is state
         state = new_state
         
+        actionStr = logAction(action, print=False)
+        log(step+1, done, actionStr, new_state, epsilon, dir=lgDir)
+
         # If done (if we're dead) : finish episode
+        env.logConsole()
         if done == True: 
             break
         
     episode += 1
-    log(episode)
     # Reduce epsilon (because we need less and less exploration)
     epsilon = updateEpsilon(episode)
     rewards.append(total_rewards)
