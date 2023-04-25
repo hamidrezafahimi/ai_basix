@@ -3,6 +3,7 @@ __pycache__/
 */*/__pycache__/
 */*/*/__pycache__/
 */*/*/*/__pycache__/
+*/*/*/*/*/__pycache__/
 *.jpg
 *.jpeg
 *.pyc
@@ -15,3 +16,6 @@ data/models/*
 !*/README.md
 !*/*/README.md
 log.*
+projects/DRL/dddqn_withPer_cnn_torch/assets/
+!projects/DRL/dddqn_withPer_cnn_torch/assets/README.md
+*.dat
