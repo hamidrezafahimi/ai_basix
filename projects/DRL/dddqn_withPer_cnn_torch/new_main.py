@@ -1,5 +1,5 @@
 import os
-DISPLAY = False
+DISPLAY = True
 if not DISPLAY:
     os.environ["SDL_VIDEODRIVER"] = "dummy"
 import sys
@@ -7,7 +7,7 @@ sys.path.append('game/')
 import flappy_wrapped as game
 import cv2
 import numpy as np
-
+import time
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -50,6 +50,8 @@ class DDQN(nn.Module):
         return int(np.prod(o.size()))
     
     def forward(self,x):
+        # print(x.shape)
+        # time.sleep(1000)
         conv_out = self.conv(x).view(x.size()[0], -1)
         action_v = self.fca(conv_out)
         value_v = self.fcv(conv_out).expand(x.size(0), self.nactions)
@@ -112,6 +114,8 @@ class Agent():
         if np.random.random() < self.epsilon:
             action = np.random.choice(ACTIONS)
         else:
+            # print(np.array([_state],copy=False).shape)
+            # time.sleep(1000)
             state_v = torch.tensor(np.array([_state],copy=False),dtype=torch.float32).to(self.device)
             action = int(torch.argmax(self.net(state_v)))
         

@@ -14,7 +14,7 @@ def plotLearning(x, scores, epsilons, filename, lines=None):
     ax.set_ylabel("Epsilon", color="C0")
     ax.tick_params(axis='x', colors="C0")
     ax.tick_params(axis='y', colors="C0")
-
+    
     N = len(scores)
     running_avg = np.empty(N)
     for t in range(N):
